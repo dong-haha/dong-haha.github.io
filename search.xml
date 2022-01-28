@@ -18,4 +18,24 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>test</title>
+    <url>/2022/01/24/test/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>随笔</category>
+        <category>Python</category>
+        <category>Java</category>
+        <category>Linux</category>
+        <category>文章复现</category>
+        <category>生信流程分析</category>
+        <category>前端</category>
+        <category>绘图</category>
+        <category>分子生物学</category>
+        <category>生物</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
 </search>
