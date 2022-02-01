@@ -21,7 +21,8 @@
   <entry>
     <title>test</title>
     <url>/2022/01/24/test/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>测试hexo标签和分类功能</p>
+]]></content>
       <categories>
         <category>随笔</category>
         <category>Python</category>
