@@ -23,7 +23,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;student&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>学生姓名：&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">h2</span>&gt;</span>学生性别：&#123;&#123;sex&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;sendStudentName&quot;</span>&gt;</span>把学生名给School组件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">		<span class="attr">name</span>:<span class="string">&#x27;Student&#x27;</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">		<span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">			<span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">				<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">				<span class="attr">sex</span>:<span class="string">&#x27;男&#x27;</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">		&#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">		<span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">			<span class="comment">// console.log(&#x27;Student&#x27;,this.x)</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">		&#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">		<span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">			<span class="function"><span class="title">sendStudentName</span>(<span class="params"></span>)</span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">				<span class="built_in">this</span>.$bus.$emit(<span class="string">&#x27;hello&#x27;</span>,<span class="built_in">this</span>.name)</span></span></span><br><span class="line"><span class="javascript"><span class="xml">			&#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">		&#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">	&#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>school.vue</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">		<span class="attr">name</span>:<span class="string">&#x27;School&#x27;</span>,</span><br><span class="line">		<span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				<span class="attr">name</span>:<span class="string">&#x27;尚硅谷&#x27;</span>,</span><br><span class="line">				<span class="attr">address</span>:<span class="string">&#x27;北京&#x27;</span>,</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">			<span class="comment">// console.log(&#x27;School&#x27;,this)</span></span><br><span class="line">			<span class="built_in">this</span>.$bus.$on(<span class="string">&#x27;hello&#x27;</span>,<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">&#x27;我是School组件，收到了数据&#x27;</span>,data)</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="function"><span class="title">beforeDestroy</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">			<span class="built_in">this</span>.$bus.$off(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>总结：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645537006180-c8b7dd66-9d44-4f16-864b-69bdefdc9b8d.png#clientId=udee7ddaa-f38f-4&crop=0&crop=0&crop=0.6451&crop=0.7267&from=paste&height=246&id=u4f8e09ce&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1084&originWidth=2678&originalType=url&ratio=1&rotation=0&showTitle=false&size=141233&status=done&style=none&taskId=ubebd39cb-7186-4520-8e84-ddce067c518&title=&width=607" alt="image.png"></p>
+<p>总结：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645537006180-c8b7dd66-9d44-4f16-864b-69bdefdc9b8d.png#clientId=udee7ddaa-f38f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=262&id=u4f8e09ce&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1084&originWidth=2678&originalType=url&ratio=1&rotation=0&showTitle=false&size=141233&status=done&style=none&taskId=ubebd39cb-7186-4520-8e84-ddce067c518&title=&width=647" alt="image.png"></p>
 <blockquote>
 <p>全局事件总线：<a href="https://www.cnblogs.com/fsg6/p/13520138.html">https://www.cnblogs.com/fsg6/p/13520138.html</a><br>    <a href="https://www.cnblogs.com/Listener-wy/p/14993877.html">https://www.cnblogs.com/Listener-wy/p/14993877.html</a><br>    <a href="https://blog.csdn.net/pshdhx/article/details/109291935">https://blog.csdn.net/pshdhx/article/details/109291935</a></p>
 </blockquote>
@@ -47,24 +47,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/01/23/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>test</title>
     <url>/2022/01/24/test/</url>
     <content><![CDATA[<p>测试hexo标签和分类功能</p>
@@ -85,6 +67,24 @@
       <tags>
         <tag>test</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/01/23/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>vue中的computed和method</title>
