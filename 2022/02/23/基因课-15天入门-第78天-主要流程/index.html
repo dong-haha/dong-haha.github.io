@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/title.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/title.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/title.ico">
+  <link rel="mask-icon" href="/images/title.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="第七天流程 参考序列：目录结构： 1.mappingstep1：构建参考基因组1hisat2-build -p 10 ..&#x2F;ref&#x2F;genome.fasta ..&#x2F;ref&#x2F;genome 1&gt;hisat2-build.log 2&gt;&amp;1 （注意，不能用gz文件）​  生成： step2：比对12hisat2 --new-summary -p 10 -x ..&#x2F;ref&#x2F;genom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基因课-15天入门-第78天-主要流程">
+<meta property="og:url" content="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC78%E5%A4%A9-%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="是东东啊">
+<meta property="og:description" content="第七天流程 参考序列：目录结构： 1.mappingstep1：构建参考基因组1hisat2-build -p 10 ..&#x2F;ref&#x2F;genome.fasta ..&#x2F;ref&#x2F;genome 1&gt;hisat2-build.log 2&gt;&amp;1 （注意，不能用gz文件）​  生成： step2：比对12hisat2 --new-summary -p 10 -x ..&#x2F;ref&#x2F;genom">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604790415-b3463687-a9ba-43e3-84d4-290a4c31abe1.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=529&id=ue8ee1d09&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1058&originWidth=1277&originalType=binary&ratio=1&rotation=0&showTitle=false&size=154525&status=done&style=none&taskId=uc7fdbe9a-1197-4690-b2ed-6a4288145df&title=&width=638.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604826702-ecf75544-b07e-4aef-8877-7a789c596c3a.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=162&id=u2cf98d38&margin=%5Bobject%20Object%5D&name=image.png&originHeight=315&originWidth=903&originalType=binary&ratio=1&rotation=0&showTitle=false&size=54762&status=done&style=none&taskId=u345f8dd2-c612-41a7-b160-bfc229f894f&title=&width=463.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604919782-3d81c8b6-6442-40ba-8506-c94d856a28a2.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=173&id=u6ce8e34c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=664&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29221&status=done&style=none&taskId=ub92c8b8c-8c89-4f89-8252-743c660b374&title=&width=503">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645605070901-fdf21209-8153-4bd4-9f5e-c6391a606628.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=138&id=ud39f9be2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=187&originWidth=666&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21677&status=done&style=none&taskId=u609cda99-1997-4d23-a35c-7dfe7072f22&title=&width=490">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645605234644-e632f8b5-369a-4250-8c2d-2c29476a32e2.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=114&id=u669311cf&margin=%5Bobject%20Object%5D&name=image.png&originHeight=160&originWidth=790&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18558&status=done&style=none&taskId=uae10236b-04cd-48bf-93e5-9c7ce6e9c8f&title=&width=564">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607486275-f8cebfbe-f13b-4e70-b384-ad09ddaf1a7c.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=252&id=u07a93f0c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=504&originWidth=1387&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96305&status=done&style=none&taskId=u37dd5cd4-3a7e-4788-8d27-9145872b7eb&title=&width=693.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607617832-f67124a4-9486-483b-9a76-675899f23f6d.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=298&id=u31e039da&margin=%5Bobject%20Object%5D&name=image.png&originHeight=455&originWidth=638&originalType=binary&ratio=1&rotation=0&showTitle=false&size=52073&status=done&style=none&taskId=u14a73ad7-ce0e-4726-839b-cd7ff1447ab&title=&width=418">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607732600-916fc292-2e6d-4681-b7b9-6d99bf8855c3.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=66&id=u35898c15&margin=%5Bobject%20Object%5D&name=image.png&originHeight=109&originWidth=585&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11705&status=done&style=none&taskId=u23b6bd81-f25b-4929-9db1-383e149ebfe&title=&width=355.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607754265-e071d35b-2b58-40c2-9e52-e1418c968267.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=306&id=ub81ea9f4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=612&originWidth=1418&originalType=binary&ratio=1&rotation=0&showTitle=false&size=70977&status=done&style=none&taskId=u3c53f5b7-4296-48f7-a42c-158c483da0a&title=&width=709">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607825018-45c7b494-3c6b-4ce1-8720-3ca7d833212b.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=340&id=u0d818f4c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1479&originalType=binary&ratio=1&rotation=0&showTitle=false&size=140417&status=done&style=none&taskId=ub7498f6c-d8b3-45fa-baac-7d421b6b862&title=&width=739.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607847527-0c87e86b-e8a0-4b92-b17c-1a087dc52a87.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=289&id=ub2336941&margin=%5Bobject%20Object%5D&name=image.png&originHeight=577&originWidth=782&originalType=binary&ratio=1&rotation=0&showTitle=false&size=82807&status=done&style=none&taskId=udbce9005-6835-451b-8df5-c31bbbe0ea9&title=&width=391">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608157486-143f439c-7fb1-40e9-bfba-04f7045bdf80.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=88&id=uedff9a6c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=140&originWidth=192&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5800&status=done&style=none&taskId=ufb082b1b-e58a-4881-877d-da7925859da&title=&width=121">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608213166-d57943b9-f845-4ee0-bd55-26c2ea6544c7.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=287&id=u8c055c4d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=573&originWidth=240&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20086&status=done&style=none&taskId=u8ae12291-21a3-460f-b9cc-e81b31d67ff&title=&width=120">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608275838-4721ffd8-6038-4f32-be1a-e1817b028097.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=173&id=u41936d74&margin=%5Bobject%20Object%5D&name=image.png&originHeight=345&originWidth=859&originalType=binary&ratio=1&rotation=0&showTitle=false&size=63116&status=done&style=none&taskId=ud887461d-c7a8-4c27-8e90-c1153d8d525&title=&width=429.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608292683-3273c9eb-8e44-4c83-957b-90263808f126.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=200&id=ueabd5703&margin=%5Bobject%20Object%5D&name=image.png&originHeight=399&originWidth=1541&originalType=binary&ratio=1&rotation=0&showTitle=false&size=106890&status=done&style=none&taskId=u6e2af944-477b-4ff1-aacd-6a3bab568fa&title=&width=770.5">
+<meta property="article:published_time" content="2022-02-23T11:30:49.000Z">
+<meta property="article:modified_time" content="2022-02-23T11:31:51.677Z">
+<meta property="article:author" content="东东">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604790415-b3463687-a9ba-43e3-84d4-290a4c31abe1.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=529&id=ue8ee1d09&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1058&originWidth=1277&originalType=binary&ratio=1&rotation=0&showTitle=false&size=154525&status=done&style=none&taskId=uc7fdbe9a-1197-4690-b2ed-6a4288145df&title=&width=638.5">
+
+<link rel="canonical" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC78%E5%A4%A9-%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基因课-15天入门-第78天-主要流程 | 是东东啊</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">是东东啊</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客，记录美好生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC78%E5%A4%A9-%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基因课-15天入门-第78天-主要流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-23 19:30:49 / 修改时间：19:31:51" itemprop="dateCreated datePublished" datetime="2022-02-23T19:30:49+08:00">2022-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/%E5%9F%BA%E5%9B%A0%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">基因课</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">生信流程分析</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/%E8%BD%AC%E5%BD%95%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">转录组</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer" />
+
+<h3 id="第七天流程"><a href="#第七天流程" class="headerlink" title="第七天流程"></a>第七天流程</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604790415-b3463687-a9ba-43e3-84d4-290a4c31abe1.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=529&id=ue8ee1d09&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1058&originWidth=1277&originalType=binary&ratio=1&rotation=0&showTitle=false&size=154525&status=done&style=none&taskId=uc7fdbe9a-1197-4690-b2ed-6a4288145df&title=&width=638.5" alt="image.png"></p>
+<p><strong>参考序列：</strong><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604826702-ecf75544-b07e-4aef-8877-7a789c596c3a.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=162&id=u2cf98d38&margin=%5Bobject%20Object%5D&name=image.png&originHeight=315&originWidth=903&originalType=binary&ratio=1&rotation=0&showTitle=false&size=54762&status=done&style=none&taskId=u345f8dd2-c612-41a7-b160-bfc229f894f&title=&width=463.5" alt="image.png"><br><strong>目录结构：</strong><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604919782-3d81c8b6-6442-40ba-8506-c94d856a28a2.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=173&id=u6ce8e34c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=664&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29221&status=done&style=none&taskId=ub92c8b8c-8c89-4f89-8252-743c660b374&title=&width=503" alt="image.png"></p>
+<h2 id="1-mapping"><a href="#1-mapping" class="headerlink" title="1.mapping"></a>1.mapping</h2><h3 id="step1：构建参考基因组"><a href="#step1：构建参考基因组" class="headerlink" title="step1：构建参考基因组"></a>step1：构建参考基因组</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hisat2-build -p 10 ../ref/genome.fasta ../ref/genome 1&gt;hisat2-build.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p><em>（注意，不能用gz文件）</em><br><em>​</em></p>
+<p> 生成：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645605070901-fdf21209-8153-4bd4-9f5e-c6391a606628.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=138&id=ud39f9be2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=187&originWidth=666&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21677&status=done&style=none&taskId=u609cda99-1997-4d23-a35c-7dfe7072f22&title=&width=490" alt="image.png"></p>
+<h3 id="step2：比对"><a href="#step2：比对" class="headerlink" title="step2：比对"></a>step2：比对</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hisat2 --new-summary -p 10 -x ../ref/genome -U ../data/BLO_S1_LD1.fq.gz -S </span><br><span class="line"> BLO_S1_LD1.sam --rna-strandness R 1&gt;BLO_S1_LD1.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>参数： -x : 构建的参考基因组<br> -u : 单末端测序的文件 若双末端： -1 -2<br> -S： 输出文件<br> -p： 线程数<br> –new-summary： 比对结果报告用新的，和旧的tophat区别<br> –rna-strandness R：链特异性<br>​</p>
+</blockquote>
+<blockquote>
+<p>输出： 1. sam文件</p>
+<pre><code>  2. log文件 
+</code></pre>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645605234644-e632f8b5-369a-4250-8c2d-2c29476a32e2.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=114&id=u669311cf&margin=%5Bobject%20Object%5D&name=image.png&originHeight=160&originWidth=790&originalType=binary&ratio=1&rotation=0&showTitle=false&size=18558&status=done&style=none&taskId=uae10236b-04cd-48bf-93e5-9c7ce6e9c8f&title=&width=564" alt="image.png"></p>
+<h3 id="step3-压缩与排序"><a href="#step3-压缩与排序" class="headerlink" title="step3: 压缩与排序"></a>step3: 压缩与排序</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">samtools sort -o BLO_S1_LD1.bam BLO_S1_LD1.sam</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="step4：-bam-index"><a href="#step4：-bam-index" class="headerlink" title="step4： bam index"></a>step4： bam index</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">samtools index BLO_S1_LD1.bam</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">批处理：</span><br><span class="line">awk &#x27;&#123;print &quot;hisat2 --new-summary -p 10 -x ../ref/genome -U &quot;$3&quot; -S &quot;$2&quot;.sam --rna-strandness R 1&gt;&quot;$2&quot;.log 2&gt;&amp;1 &quot;&#125;&#x27; ../data/samples.txt &gt; step2.1.run_hisat.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;print &quot;samtools sort -o &quot;$2&quot;.bam &quot;$2&quot;.sam&quot;&#125;&#x27; ../data/samples.txt &gt; step3.1.sam2bam.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;print &quot;samtools index &quot;$2&quot;.bam&quot;&#125;&#x27; ../data/samples.txt &gt; step4.1.bamindex.sh</span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="2-表达定量"><a href="#2-表达定量" class="headerlink" title="2.表达定量"></a>2.表达定量</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conda install r-base=4.0.3</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用conda安装R包</span></span><br><span class="line">conda install bioconductor-rsubread</span><br><span class="line"></span><br><span class="line">conda install bioconductor-limma bioconductor-edger</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="不用R的subread"><a href="#不用R的subread" class="headerlink" title="不用R的subread"></a>不用R的subread</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install subread</span><br><span class="line"></span><br><span class="line">featureCounts -a ../ref/genes.gtf -o test.txt ../1.Mapping/BLO_S1_LD2.bam</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>#号开头的注释行,记录了运行的命令；<br>Geneid开头的行是表头，Geneid代表统计的meta-features的名称，Chr,Start,End对应染色体上的位置，Strand代表正负链，由于一个基因有多个外显子构成，所以这里的染色体位置信息有多个，和外显子个数一一对应。<br>Length 该区间的长度，最后一列的表头是你的输入文件的名称，代表的是这个meta-feature的表达量。</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607486275-f8cebfbe-f13b-4e70-b384-ad09ddaf1a7c.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=252&id=u07a93f0c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=504&originWidth=1387&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96305&status=done&style=none&taskId=u37dd5cd4-3a7e-4788-8d27-9145872b7eb&title=&width=693.5" alt="image.png"></p>
+<p><strong>!!!  这里只有count，还需要后续分析</strong></p>
+<hr>
+<h4 id="用rsubread"><a href="#用rsubread" class="headerlink" title="用rsubread"></a>用rsubread</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rscript script/run-featurecounts.R -b ../1.Mapping/BLO_S1_LD1.bam -g ../ref/genes.gtf -o BLO_S1_LD1</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607617832-f67124a4-9486-483b-9a76-675899f23f6d.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=298&id=u31e039da&margin=%5Bobject%20Object%5D&name=image.png&originHeight=455&originWidth=638&originalType=binary&ratio=1&rotation=0&showTitle=false&size=52073&status=done&style=none&taskId=u14a73ad7-ce0e-4726-839b-cd7ff1447ab&title=&width=418" alt="image.png"><br><strong>（这里的run-featurecounts.R是基因课写好的脚本，方便分析）</strong></p>
+<blockquote>
+<p>用的别人写好的R脚本，可以直接计算出tpm、fpkm</p>
+</blockquote>
+<h2 id="3-合并矩阵"><a href="#3-合并矩阵" class="headerlink" title="3.合并矩阵"></a>3.合并矩阵</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls ../2.Quantification/*.count &gt;genes.quant_files.txt</span><br><span class="line"></span><br><span class="line">perl script/abundance_estimates_to_matrix.pl --est_method featureCounts --quant_files genes.quant_files.txt --out_prefix apple</span><br></pre></td></tr></table></figure>
+
+<p>整合数据，并计算TMM</p>
+<p>得到一下文件：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607732600-916fc292-2e6d-4681-b7b9-6d99bf8855c3.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=66&id=u35898c15&margin=%5Bobject%20Object%5D&name=image.png&originHeight=109&originWidth=585&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11705&status=done&style=none&taskId=u23b6bd81-f25b-4929-9db1-383e149ebfe&title=&width=355.5" alt="image.png"><br>apple.counts.matrix<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607754265-e071d35b-2b58-40c2-9e52-e1418c968267.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=306&id=ub81ea9f4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=612&originWidth=1418&originalType=binary&ratio=1&rotation=0&showTitle=false&size=70977&status=done&style=none&taskId=u3c53f5b7-4296-48f7-a42c-158c483da0a&title=&width=709" alt="image.png"></p>
+<p>apple.TMM.EXPR.matrix：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607825018-45c7b494-3c6b-4ce1-8720-3ca7d833212b.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=340&id=u0d818f4c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1479&originalType=binary&ratio=1&rotation=0&showTitle=false&size=140417&status=done&style=none&taskId=ub7498f6c-d8b3-45fa-baac-7d421b6b862&title=&width=739.5" alt="image.png"></p>
+<p>apple.TPM.not_cross_norm.TMM_info.txt：<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645607847527-0c87e86b-e8a0-4b92-b17c-1a087dc52a87.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=289&id=ub2336941&margin=%5Bobject%20Object%5D&name=image.png&originHeight=577&originWidth=782&originalType=binary&ratio=1&rotation=0&showTitle=false&size=82807&status=done&style=none&taskId=udbce9005-6835-451b-8df5-c31bbbe0ea9&title=&width=391" alt="image.png"></p>
+<h2 id="4-差异表达分析"><a href="#4-差异表达分析" class="headerlink" title="4.差异表达分析"></a>4.差异表达分析</h2><p>做火山图用的数据）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install trinity </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>（注意R包被污染），可能安装后，输入R后，出错。</strong></p>
+</blockquote>
+<p><strong>​</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">perl ~/miniconda3/opt/trinity-2.1.1/Analysis/DifferentialExpression/run_DE_analysis.pl \</span><br><span class="line"> --matrix ../3.Merge_result/genes.counts.matrix \</span><br><span class="line"> --method DESeq2 \</span><br><span class="line"> --samples_file ../data/samples.txt \</span><br><span class="line"> --contrasts contrasts.txt</span><br></pre></td></tr></table></figure>
+<p>其中contrasts.txt：想要比对的组<br>.<img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608157486-143f439c-7fb1-40e9-bfba-04f7045bdf80.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=88&id=uedff9a6c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=140&originWidth=192&originalType=binary&ratio=1&rotation=0&showTitle=false&size=5800&status=done&style=none&taskId=ufb082b1b-e58a-4881-877d-da7925859da&title=&width=121" alt="image.png"><br>/data/samples.txt 分组<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608213166-d57943b9-f845-4ee0-bd55-26c2ea6544c7.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=287&id=u8c055c4d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=573&originWidth=240&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20086&status=done&style=none&taskId=u8ae12291-21a3-460f-b9cc-e81b31d67ff&title=&width=120" alt="image.png"></p>
+<p>生成总的文件<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608275838-4721ffd8-6038-4f32-be1a-e1817b028097.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=173&id=u41936d74&margin=%5Bobject%20Object%5D&name=image.png&originHeight=345&originWidth=859&originalType=binary&ratio=1&rotation=0&showTitle=false&size=63116&status=done&style=none&taskId=ud887461d-c7a8-4c27-8e90-c1153d8d525&title=&width=429.5" alt="image.png"><br>genes.counts.matrix.KID_S1_vs_BLO_S1.DESeq2.DE_results<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645608292683-3273c9eb-8e44-4c83-957b-90263808f126.png#clientId=uaa97830e-ef93-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=200&id=ueabd5703&margin=%5Bobject%20Object%5D&name=image.png&originHeight=399&originWidth=1541&originalType=binary&ratio=1&rotation=0&showTitle=false&size=106890&status=done&style=none&taskId=u6e2af944-477b-4ff1-aacd-6a3bab568fa&title=&width=770.5" alt="image.png"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC%E5%85%AD%E4%B8%83%E5%A4%A9-%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="第六七天-知识点">
+      <i class="fa fa-chevron-left"></i> 第六七天-知识点
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E5%A4%A9%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">第七天流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-mapping"><span class="nav-number"></span> <span class="nav-text">1.mapping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1%EF%BC%9A%E6%9E%84%E5%BB%BA%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">step1：构建参考基因组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2%EF%BC%9A%E6%AF%94%E5%AF%B9"><span class="nav-number">2.</span> <span class="nav-text">step2：比对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3-%E5%8E%8B%E7%BC%A9%E4%B8%8E%E6%8E%92%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">step3: 压缩与排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4%EF%BC%9A-bam-index"><span class="nav-number">4.</span> <span class="nav-text">step4： bam index</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%A1%A8%E8%BE%BE%E5%AE%9A%E9%87%8F"><span class="nav-number"></span> <span class="nav-text">2.表达定量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E7%94%A8R%E7%9A%84subread"><span class="nav-number">0.1.</span> <span class="nav-text">不用R的subread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8rsubread"><span class="nav-number">0.2.</span> <span class="nav-text">用rsubread</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%88%E5%B9%B6%E7%9F%A9%E9%98%B5"><span class="nav-number"></span> <span class="nav-text">3.合并矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B7%AE%E5%BC%82%E8%A1%A8%E8%BE%BE%E5%88%86%E6%9E%90"><span class="nav-number"></span> <span class="nav-text">4.差异表达分析</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="东东"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">东东</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">东东</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
