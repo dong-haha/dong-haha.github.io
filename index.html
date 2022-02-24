@@ -186,6 +186,330 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-14%E5%A4%A9%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-14%E5%A4%A9%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86/" class="post-title-link" itemprop="url">基因课-15天入门-转录组-14天功能富集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-23 20:31:38 / 修改时间：20:32:11" itemprop="dateCreated datePublished" datetime="2022-02-23T20:31:38+08:00">2022-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/%E5%9F%BA%E5%9B%A0%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">基因课</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">生信流程分析</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/go%E5%AF%8C%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">go富集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+### go功能富集
+
+
+<blockquote>
+<p>Gene Ontology（GO）中最基本的概念是term。GO里面的每一个entry都有一个唯一的数字标记，形如GO:nnnnnnn，还有一个term名，比如”cell”, “fibroblast growth factor receptor binding”，或者”signal transduction”。每个term都属于一个ontology，总共有三个ontology，它们分别是</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>细胞成分：细胞的部分或其细胞外环境;</li>
+<li>分子功能：基因产物在分子水平上的元素活性，例如结合或催化;</li>
+<li>生物过程：具有确定开始和结束的分子事件的操作或集合，与综合生活单元的功能有关</li>
+</ol>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BiocManager::install(&#x27;clusterProfiler&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+<p>输入文件：de_result_apple.tsv （差异表达的kid-s1_vs_kid-s4）<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618930820-87e900de-8bf8-4c13-a54c-367ce36d9856.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=174&id=ud3eb90c6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=348&originWidth=497&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27825&status=done&style=none&taskId=udf45af4d-6aac-493f-8157-1a4a6cc69fd&title=&width=248.5" alt="image.png"></p>
+<p>query_seqs.fa.emapper.annotations<br>（用蛋白序列在<a target="_blank" rel="noopener" href="http://eggnog5.embl.de/#/app/home">http://eggnog5.embl.de/#/app/home</a>做的注释文件）<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619043353-1be3fa83-7e46-4c71-b393-3684a5e3c610.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=190&id=u2f7e516e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=379&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=false&size=49268&status=done&style=none&taskId=ub7bbdcd4-35fd-4990-97d9-a45f7f2ff91&title=&width=500" alt="image.png"></p>
+<hr>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码</span></span><br><span class="line"></span><br><span class="line">library(tidyverse)</span><br><span class="line">library(clusterProfiler)</span><br><span class="line"><span class="comment"># kid-s1_vs_kid-s4</span></span><br><span class="line">de_result &lt;- read.table(</span><br><span class="line"> file = <span class="string">&#x27;./de_result_apple.tsv&#x27;</span>,</span><br><span class="line"> header = <span class="literal">TRUE</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">emapper &lt;- read_delim(</span><br><span class="line"> file = <span class="string">&#x27;./query_seqs.fa.emapper.annotations&#x27;</span>,</span><br><span class="line"> <span class="string">&quot;\t&quot;</span>, escape_double = <span class="literal">FALSE</span>, col_names = <span class="literal">FALSE</span>,</span><br><span class="line"> comment = <span class="string">&quot;#&quot;</span>, trim_ws = <span class="literal">TRUE</span>) %&gt;%</span><br><span class="line"> dplyr::select(GID = X1, </span><br><span class="line"> Gene_Symbol = X6, </span><br><span class="line"> GO = X7, </span><br><span class="line"> KO = X9, </span><br><span class="line"> Pathway = X10, </span><br><span class="line"> OG = X21, </span><br><span class="line"> Gene_Name = X22)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gene &lt;- filter(de_result, </span><br><span class="line"> <span class="built_in">abs</span>(log2FoldChange) &gt; <span class="number">2</span> &amp; padj &lt; <span class="number">0.01</span>) %&gt;%</span><br><span class="line"> pull(id)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p><strong>构建 OrgDB</strong></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个文件夹</span></span><br><span class="line">dir.create(<span class="string">&#x27;R_Library&#x27;</span>, recursive = <span class="built_in">T</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将包安装在该文件夹下</span></span><br><span class="line">install.packages(<span class="string">&#x27;./org.My.eg.db_1.0.tar.gz&#x27;</span>, </span><br><span class="line"> repos = <span class="literal">NULL</span>, <span class="comment">#从本地安装</span></span><br><span class="line"> lib = <span class="string">&#x27;R_Library&#x27;</span>) <span class="comment"># 安装文件夹</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载 OrgDB</span></span><br><span class="line">library(org.My.eg.db, lib = <span class="string">&#x27;R_Library&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 富集分析</span></span><br><span class="line">de_ego &lt;- enrichGO(gene = gene,</span><br><span class="line"> OrgDb = org.My.eg.db,</span><br><span class="line"> keyType = <span class="string">&#x27;GID&#x27;</span>,</span><br><span class="line"> ont = <span class="string">&#x27;BP&#x27;</span>,</span><br><span class="line"> qvalueCutoff = <span class="number">0.05</span>,</span><br><span class="line"> pvalueCutoff = <span class="number">0.05</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">de_ego_df &lt;- as.data.frame(de_ego)</span><br><span class="line">head(de_ego_df)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><hr>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 可视化</span></span><br><span class="line">barplot(de_ego, showCategory = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619206535-48fa47b2-a92a-421e-871f-1e8ca3ab5e52.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=270&id=u9a44a688&margin=%5Bobject%20Object%5D&name=image.png&originHeight=539&originWidth=801&originalType=binary&ratio=1&rotation=0&showTitle=false&size=124940&status=done&style=none&taskId=u881c6276-084f-41fb-a818-676866cced9&title=&width=400.5" alt="image.png"></p>
+<hr>
+<p>enrichplot::dotplot(de_ego, showCategory = 10)<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619264882-38cd4125-5014-48a1-9f12-efac321a6e90.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=256&id=uee8b84e4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=512&originWidth=794&originalType=binary&ratio=1&rotation=0&showTitle=false&size=136612&status=done&style=none&taskId=u5dc4cfde-0706-43eb-a179-70424a02b19&title=&width=397" alt="image.png"></p>
+<p>cnetplot(de_ego,<br> foldChange = geneList,<br> showCategory = 5,<br> node_label = “all”, # category | gene | all | none<br> circular = TRUE,<br> colorEdge = TRUE)</p>
+<h3 id="可视化-1"><a href="#可视化-1" class="headerlink" title="可视化"></a>可视化</h3><hr>
+<p>barplot(de_ego, showCategory = 10)</p>
+<hr>
+<h2 id="enrichplot-dotplot-de-ego-showCategory-10"><a href="#enrichplot-dotplot-de-ego-showCategory-10" class="headerlink" title="enrichplot::dotplot(de_ego, showCategory = 10) "></a>enrichplot::dotplot(de_ego, showCategory = 10) </h2><h3 id="基因差异向量（geneList）"><a href="#基因差异向量（geneList）" class="headerlink" title="基因差异向量（geneList）"></a>基因差异向量（geneList）</h3><h1 id="一个有名向量，记录差异大小，名字为基因ID，值为-logFC，按-logFC-降序排列。"><a href="#一个有名向量，记录差异大小，名字为基因ID，值为-logFC，按-logFC-降序排列。" class="headerlink" title="一个有名向量，记录差异大小，名字为基因ID，值为 logFC，按 logFC 降序排列。"></a>一个有名向量，记录差异大小，名字为基因ID，值为 logFC，按 logFC 降序排列。</h1><p>geneList &lt;- de_result$log2FoldChange<br>names(geneList) &lt;- de_result$id<br>geneList &lt;- sort(geneList, decreasing = T)</p>
+<p>cnetplot(de_ego,<br> foldChange = geneList,<br> showCategory = 5,<br> node_label = “all”, # category | gene | all | none<br> circular = TRUE,<br> colorEdge = TRUE)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">基因课-15天入门-转录组-其他问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-23 20:10:42 / 修改时间：20:21:13" itemprop="dateCreated datePublished" datetime="2022-02-23T20:10:42+08:00">2022-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/%E5%9F%BA%E5%9B%A0%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">基因课</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">生信流程分析</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/%E8%BD%AC%E5%BD%95%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">转录组</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+<h3 id="1-conda-包被污染"><a href="#1-conda-包被污染" class="headerlink" title="1.conda 包被污染"></a>1.conda 包被污染</h3><p>输入R后不能进去<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618310651-d6cf3b77-649d-4e57-9590-6ec616561a8b.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=89&id=u2b37a574&margin=%5Bobject%20Object%5D&name=image.png&originHeight=132&originWidth=623&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10949&status=done&style=none&taskId=u968fa2a2-1522-42ec-9122-8c5a8b91eb2&title=&width=418.5" alt="image.png"><br>发现安装trinity后，把R的脚本改为了链接<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618344786-5edced37-add3-4e43-bcb1-6bbd7c2f7910.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=82&id=u9652d001&margin=%5Bobject%20Object%5D&name=image.png&originHeight=164&originWidth=1493&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39476&status=done&style=none&taskId=ud3f353db-0743-49cc-9211-3b483a1ca19&title=&width=746.5" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618384441-ad3f160d-6464-4c75-a87a-73e4828d368e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=78&id=u37c599e1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=115&originWidth=841&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19143&status=done&style=none&taskId=ub9382551-263f-4174-a5cb-cbaa29813a9&title=&width=571.5" alt="image.png"><br>之后，再conda一个环境，重新装R，把R的文件复制到miniconda3/bin/R 即可</p>
+<hr>
+<p>经测试，发现<strong>不可</strong>。复制过去的R打开的是那个环境的R，还需要<strong>改路径</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s@envs/R/@@&#x27; R</span><br></pre></td></tr></table></figure>
+<h3 id="2-原始文件下载的特别慢"><a href="#2-原始文件下载的特别慢" class="headerlink" title="2.原始文件下载的特别慢"></a>2.原始文件下载的特别慢</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install sra-tools</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618557725-b95990ef-39f8-42aa-8e46-2eb5ead9ab45.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=225&id=uf628fc07&margin=%5Bobject%20Object%5D&name=image.png&originHeight=450&originWidth=407&originalType=binary&ratio=1&rotation=0&showTitle=false&size=104389&status=done&style=none&taskId=u3ae0a4ed-0861-42c3-af4d-7c0393ce05d&title=&width=203.5" alt="image.png"><br>批量下载<br>prefetch SRR*** 下载的是*.sra</p>
+<hr>
+<p>**但是 **在服务器上用prefetch下载srr特别的慢慢</p>
+<hr>
+<p>最后用embl下载。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618588255-2be1db8b-d343-4525-981e-54f083d12d2f.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=180&id=u9c59464e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=360&originWidth=1550&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64724&status=done&style=none&taskId=uc1314b8d-cfee-4a13-90fe-daaead8136c&title=&width=775" alt="image.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR217/002/SRR2176372/SRR2176372.fastq.gz</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>embl可以下载srr和fastq格式，更改 002/SRR2176372/SRR2176372<br>002的2为SRR最后一位</p>
+</blockquote>
+<h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h3><ol>
+<li>Chrome打开ftp：把”ftp”开头的网址修改为”http”开头的网址，即可顺利访问</li>
+<li>shell并行下载 用（）&amp;</li>
+<li>重命名 </li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618760168-ba3129b7-6ab6-4bd7-994d-6ff182facd1e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=124&id=u5dbc8dc8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29774&status=done&style=none&taskId=u6300fe13-5890-45c9-81e4-e7155e23cd4&title=&width=282" alt="image.png"></p>
+<ol start="4">
+<li>less 查看多个文件</li>
+</ol>
+<p><em>:n - 浏览下一个文件 :p - 浏览前一个文件</em></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E6%96%87%E7%8C%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E6%96%87%E7%8C%AE/" class="post-title-link" itemprop="url">基因课-15天入门-转录组-文献</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-23 20:09:07 / 修改时间：20:09:29" itemprop="dateCreated datePublished" datetime="2022-02-23T20:09:07+08:00">2022-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/%E5%9F%BA%E5%9B%A0%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">基因课</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">生信流程分析</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/%E8%BD%AC%E5%BD%95%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">转录组</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://academic.oup.com/jxb/article/66/22/7359/2893295">Transcriptome analysis of an apple (Malus × domestica) yellow fruit somatic mutation identifies a gene network module highly associated with anthocyanin and epigenetic regulation | Journal of Experimental Botany | Oxford Academic (oup.com)</a></p>
+</blockquote>
+<p>例如，这些花青素生物合成基因的直接调控因子MBW的上游调控信号的性质</p>
+<hr>
+<p>反式作用因子是转录模板上游基因编码的一类蛋白调节因子，包括激活因子和阻遏因子等，它们与顺式作用元件中的上游激活序列特异性结合，对真核生物基因的转录分别起促进和阻遏作用</p>
+<hr>
+<p>顺式作用元件（cis-acting element）存在于基因旁侧序列中能影响基因表达的序列。顺式作用元件包括启动子、增强子、调控序列和可诱导元件等，它们的作用是参与基因表达的调控。顺式作用元件本身不编码任何蛋白质，仅仅提供一个作用位点，要与反式作用因子相互作用而起作用</p>
+<h2 id="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析"><a href="#为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析" class="headerlink" title="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析"></a>为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析</h2><p>Simple Sequence Repeats 简单重复序列</p>
+<p>真核生物基因组中存在大量重复频率极高而顺序复杂性极低的串联重复序列。按重复基序的长度可将串联重复序列分为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8D%AB%E6%98%9FDNA/3764240">卫星DNA</a>（基序100-300bp）、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B0%8F%E5%8D%AB%E6%98%9FDNA/5615450">小卫星DNA</a>（基序10-60bp）、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BE%AE%E5%8D%AB%E6%98%9FDNA/6634990">微卫星DNA</a>（基序1-6bp）。和中卫星DNA（由不同大小串联重复组成）等。微卫星是由DNA复制或修复过程中DNA滑动和错配或者有丝分裂、减数分裂期姐妹染色单体不均等交换引起的。微卫星的突变率在不同物种、同一物种的不同位点或同一位点的不同等位基因间存在很大差异。尽管微卫星 DNA分布于整个基因组的不同位置，但其两端序列多是保守的单拷贝序列，根据这两端的序列设计一对特异引物，通过PCR技术将期间的核心微卫星DNA序列扩增出来，利用电泳分析技术就可以得到其长度的多态性，此即 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/SSR%E6%A0%87%E8%AE%B0/10789119">SSR标记</a>的原理。</p>
+<hr>
+<hr>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC78%E5%A4%A9-%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -923,277 +1247,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cmethod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="东东">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是东东啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/21/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cmethod/" class="post-title-link" itemprop="url">vue中的computed和method</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-21 21:30:31 / 修改时间：21:59:01" itemprop="dateCreated datePublished" datetime="2022-02-21T21:30:31+08:00">2022-02-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;example&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: &quot;&#123;&#123; message &#125;&#125;&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Computed reversed message: &quot;&#123;&#123; reversedMessage &#125;&#125;&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#example&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="comment">// 计算属性的 getter</span></span><br><span class="line">    <span class="attr">reversedMessage</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `this` 指向 vm 实例</span></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.message.split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>computed定义的方法我们是以属性的形式访问的，和data里的属性访问形式一样，</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--HTML部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test1&quot;</span>&gt;</span>&#123;&#123;methodTest&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test2-1&quot;</span>&gt;</span>&#123;&#123;methodTest()&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test3-1&quot;</span>&gt;</span>&#123;&#123;computedTest&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--script部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="javascript">    <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">message</span>: <span class="string">&#x27;我是消息，&#x27;</span></span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">methodTest</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.message + <span class="string">&#x27;现在我用的是methods&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">computed</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">computedTest</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.message + <span class="string">&#x27;现在我用的是computed&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>methods定义的方法，我们必须要加上()来调用，如methodTest()</p>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ol>
-<li>computed是<strong>属性访问</strong>，而methods是<strong>函数调用</strong></li>
-<li>computed带有<strong>缓存功能</strong>，而methods不是</li>
-</ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>computed其实是就是<strong>属性</strong>，之所以与data区分开，只不过为了<strong>防止文本插值中逻辑过重，会导致不易维护</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/24/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="东东">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是东东啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/24/test/" class="post-title-link" itemprop="url">test</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-01-24 15:59:35" itemprop="dateCreated datePublished" datetime="2022-01-24T15:59:35+08:00">2022-01-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-25 15:59:35" itemprop="dateModified" datetime="2022-01-25T15:59:35+08:00">2022-01-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">生信流程分析</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E7%AB%A0%E5%A4%8D%E7%8E%B0/" itemprop="url" rel="index"><span itemprop="name">文章复现</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">绘图</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">分子生物学</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E7%89%A9/" itemprop="url" rel="index"><span itemprop="name">生物</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>测试hexo标签和分类功能</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="东东">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是东东啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/23/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-01-23 21:36:04" itemprop="dateCreated datePublished" datetime="2022-01-23T21:36:04+08:00">2022-01-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1260,14 +1318,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

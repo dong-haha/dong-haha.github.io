@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/title.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/title.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/title.ico">
+  <link rel="mask-icon" href="/images/title.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="### go功能富集    Gene Ontology（GO）中最基本的概念是term。GO里面的每一个entry都有一个唯一的数字标记，形如GO:nnnnnnn，还有一个term名，比如”cell”, “fibroblast growth factor receptor binding”，或者”signal transduction”。每个term都属于一个ontology，总共有三个onto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基因课-15天入门-转录组-14天功能富集">
+<meta property="og:url" content="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-14%E5%A4%A9%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86/index.html">
+<meta property="og:site_name" content="是东东啊">
+<meta property="og:description" content="### go功能富集    Gene Ontology（GO）中最基本的概念是term。GO里面的每一个entry都有一个唯一的数字标记，形如GO:nnnnnnn，还有一个term名，比如”cell”, “fibroblast growth factor receptor binding”，或者”signal transduction”。每个term都属于一个ontology，总共有三个onto">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618930820-87e900de-8bf8-4c13-a54c-367ce36d9856.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=174&id=ud3eb90c6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=348&originWidth=497&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27825&status=done&style=none&taskId=udf45af4d-6aac-493f-8157-1a4a6cc69fd&title=&width=248.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619043353-1be3fa83-7e46-4c71-b393-3684a5e3c610.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=190&id=u2f7e516e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=379&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=false&size=49268&status=done&style=none&taskId=ub7bbdcd4-35fd-4990-97d9-a45f7f2ff91&title=&width=500">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619206535-48fa47b2-a92a-421e-871f-1e8ca3ab5e52.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=270&id=u9a44a688&margin=%5Bobject%20Object%5D&name=image.png&originHeight=539&originWidth=801&originalType=binary&ratio=1&rotation=0&showTitle=false&size=124940&status=done&style=none&taskId=u881c6276-084f-41fb-a818-676866cced9&title=&width=400.5">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619264882-38cd4125-5014-48a1-9f12-efac321a6e90.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=256&id=uee8b84e4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=512&originWidth=794&originalType=binary&ratio=1&rotation=0&showTitle=false&size=136612&status=done&style=none&taskId=u5dc4cfde-0706-43eb-a179-70424a02b19&title=&width=397">
+<meta property="article:published_time" content="2022-02-23T12:31:38.000Z">
+<meta property="article:modified_time" content="2022-02-23T12:32:11.962Z">
+<meta property="article:author" content="东东">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618930820-87e900de-8bf8-4c13-a54c-367ce36d9856.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=174&id=ud3eb90c6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=348&originWidth=497&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27825&status=done&style=none&taskId=udf45af4d-6aac-493f-8157-1a4a6cc69fd&title=&width=248.5">
+
+<link rel="canonical" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-14%E5%A4%A9%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基因课-15天入门-转录组-14天功能富集 | 是东东啊</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">是东东啊</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客，记录美好生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-14%E5%A4%A9%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基因课-15天入门-转录组-14天功能富集
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-23 20:31:38 / 修改时间：20:32:11" itemprop="dateCreated datePublished" datetime="2022-02-23T20:31:38+08:00">2022-02-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/%E5%9F%BA%E5%9B%A0%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">基因课</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">生信流程分析</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/go%E5%AF%8C%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">go富集</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer" />
+### go功能富集
+
+
+<blockquote>
+<p>Gene Ontology（GO）中最基本的概念是term。GO里面的每一个entry都有一个唯一的数字标记，形如GO:nnnnnnn，还有一个term名，比如”cell”, “fibroblast growth factor receptor binding”，或者”signal transduction”。每个term都属于一个ontology，总共有三个ontology，它们分别是</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>细胞成分：细胞的部分或其细胞外环境;</li>
+<li>分子功能：基因产物在分子水平上的元素活性，例如结合或催化;</li>
+<li>生物过程：具有确定开始和结束的分子事件的操作或集合，与综合生活单元的功能有关</li>
+</ol>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BiocManager::install(&#x27;clusterProfiler&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+<p>输入文件：de_result_apple.tsv （差异表达的kid-s1_vs_kid-s4）<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618930820-87e900de-8bf8-4c13-a54c-367ce36d9856.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=174&id=ud3eb90c6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=348&originWidth=497&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27825&status=done&style=none&taskId=udf45af4d-6aac-493f-8157-1a4a6cc69fd&title=&width=248.5" alt="image.png"></p>
+<p>query_seqs.fa.emapper.annotations<br>（用蛋白序列在<a target="_blank" rel="noopener" href="http://eggnog5.embl.de/#/app/home">http://eggnog5.embl.de/#/app/home</a>做的注释文件）<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619043353-1be3fa83-7e46-4c71-b393-3684a5e3c610.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=190&id=u2f7e516e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=379&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=false&size=49268&status=done&style=none&taskId=ub7bbdcd4-35fd-4990-97d9-a45f7f2ff91&title=&width=500" alt="image.png"></p>
+<hr>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码</span></span><br><span class="line"></span><br><span class="line">library(tidyverse)</span><br><span class="line">library(clusterProfiler)</span><br><span class="line"><span class="comment"># kid-s1_vs_kid-s4</span></span><br><span class="line">de_result &lt;- read.table(</span><br><span class="line"> file = <span class="string">&#x27;./de_result_apple.tsv&#x27;</span>,</span><br><span class="line"> header = <span class="literal">TRUE</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">emapper &lt;- read_delim(</span><br><span class="line"> file = <span class="string">&#x27;./query_seqs.fa.emapper.annotations&#x27;</span>,</span><br><span class="line"> <span class="string">&quot;\t&quot;</span>, escape_double = <span class="literal">FALSE</span>, col_names = <span class="literal">FALSE</span>,</span><br><span class="line"> comment = <span class="string">&quot;#&quot;</span>, trim_ws = <span class="literal">TRUE</span>) %&gt;%</span><br><span class="line"> dplyr::select(GID = X1, </span><br><span class="line"> Gene_Symbol = X6, </span><br><span class="line"> GO = X7, </span><br><span class="line"> KO = X9, </span><br><span class="line"> Pathway = X10, </span><br><span class="line"> OG = X21, </span><br><span class="line"> Gene_Name = X22)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gene &lt;- filter(de_result, </span><br><span class="line"> <span class="built_in">abs</span>(log2FoldChange) &gt; <span class="number">2</span> &amp; padj &lt; <span class="number">0.01</span>) %&gt;%</span><br><span class="line"> pull(id)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p><strong>构建 OrgDB</strong></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个文件夹</span></span><br><span class="line">dir.create(<span class="string">&#x27;R_Library&#x27;</span>, recursive = <span class="built_in">T</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将包安装在该文件夹下</span></span><br><span class="line">install.packages(<span class="string">&#x27;./org.My.eg.db_1.0.tar.gz&#x27;</span>, </span><br><span class="line"> repos = <span class="literal">NULL</span>, <span class="comment">#从本地安装</span></span><br><span class="line"> lib = <span class="string">&#x27;R_Library&#x27;</span>) <span class="comment"># 安装文件夹</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载 OrgDB</span></span><br><span class="line">library(org.My.eg.db, lib = <span class="string">&#x27;R_Library&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 富集分析</span></span><br><span class="line">de_ego &lt;- enrichGO(gene = gene,</span><br><span class="line"> OrgDb = org.My.eg.db,</span><br><span class="line"> keyType = <span class="string">&#x27;GID&#x27;</span>,</span><br><span class="line"> ont = <span class="string">&#x27;BP&#x27;</span>,</span><br><span class="line"> qvalueCutoff = <span class="number">0.05</span>,</span><br><span class="line"> pvalueCutoff = <span class="number">0.05</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">de_ego_df &lt;- as.data.frame(de_ego)</span><br><span class="line">head(de_ego_df)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><hr>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 可视化</span></span><br><span class="line">barplot(de_ego, showCategory = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619206535-48fa47b2-a92a-421e-871f-1e8ca3ab5e52.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=270&id=u9a44a688&margin=%5Bobject%20Object%5D&name=image.png&originHeight=539&originWidth=801&originalType=binary&ratio=1&rotation=0&showTitle=false&size=124940&status=done&style=none&taskId=u881c6276-084f-41fb-a818-676866cced9&title=&width=400.5" alt="image.png"></p>
+<hr>
+<p>enrichplot::dotplot(de_ego, showCategory = 10)<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645619264882-38cd4125-5014-48a1-9f12-efac321a6e90.png#clientId=ufa61746c-4235-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=256&id=uee8b84e4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=512&originWidth=794&originalType=binary&ratio=1&rotation=0&showTitle=false&size=136612&status=done&style=none&taskId=u5dc4cfde-0706-43eb-a179-70424a02b19&title=&width=397" alt="image.png"></p>
+<p>cnetplot(de_ego,<br> foldChange = geneList,<br> showCategory = 5,<br> node_label = “all”, # category | gene | all | none<br> circular = TRUE,<br> colorEdge = TRUE)</p>
+<h3 id="可视化-1"><a href="#可视化-1" class="headerlink" title="可视化"></a>可视化</h3><hr>
+<p>barplot(de_ego, showCategory = 10)</p>
+<hr>
+<h2 id="enrichplot-dotplot-de-ego-showCategory-10"><a href="#enrichplot-dotplot-de-ego-showCategory-10" class="headerlink" title="enrichplot::dotplot(de_ego, showCategory = 10) "></a>enrichplot::dotplot(de_ego, showCategory = 10) </h2><h3 id="基因差异向量（geneList）"><a href="#基因差异向量（geneList）" class="headerlink" title="基因差异向量（geneList）"></a>基因差异向量（geneList）</h3><h1 id="一个有名向量，记录差异大小，名字为基因ID，值为-logFC，按-logFC-降序排列。"><a href="#一个有名向量，记录差异大小，名字为基因ID，值为-logFC，按-logFC-降序排列。" class="headerlink" title="一个有名向量，记录差异大小，名字为基因ID，值为 logFC，按 logFC 降序排列。"></a>一个有名向量，记录差异大小，名字为基因ID，值为 logFC，按 logFC 降序排列。</h1><p>geneList &lt;- de_result$log2FoldChange<br>names(geneList) &lt;- de_result$id<br>geneList &lt;- sort(geneList, decreasing = T)</p>
+<p>cnetplot(de_ego,<br> foldChange = geneList,<br> showCategory = 5,<br> node_label = “all”, # category | gene | all | none<br> circular = TRUE,<br> colorEdge = TRUE)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/" rel="prev" title="基因课-15天入门-转录组-其他问题">
+      <i class="fa fa-chevron-left"></i> 基因课-15天入门-转录组-其他问题
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96-1"><span class="nav-number">2.</span> <span class="nav-text">可视化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enrichplot-dotplot-de-ego-showCategory-10"><span class="nav-number"></span> <span class="nav-text">enrichplot::dotplot(de_ego, showCategory &#x3D; 10) </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E5%9B%A0%E5%B7%AE%E5%BC%82%E5%90%91%E9%87%8F%EF%BC%88geneList%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">基因差异向量（geneList）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%9C%89%E5%90%8D%E5%90%91%E9%87%8F%EF%BC%8C%E8%AE%B0%E5%BD%95%E5%B7%AE%E5%BC%82%E5%A4%A7%E5%B0%8F%EF%BC%8C%E5%90%8D%E5%AD%97%E4%B8%BA%E5%9F%BA%E5%9B%A0ID%EF%BC%8C%E5%80%BC%E4%B8%BA-logFC%EF%BC%8C%E6%8C%89-logFC-%E9%99%8D%E5%BA%8F%E6%8E%92%E5%88%97%E3%80%82"><span class="nav-number"></span> <span class="nav-text">一个有名向量，记录差异大小，名字为基因ID，值为 logFC，按 logFC 降序排列。</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="东东"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">东东</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">东东</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
