@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2022/01/23/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Vue组件间通信方式</title>
     <url>/2022/02/23/Vue%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -49,22 +67,67 @@
       </categories>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/01/23/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>test</title>
+    <url>/2022/01/24/test/</url>
+    <content><![CDATA[<p>测试hexo标签和分类功能</p>
 ]]></content>
+      <categories>
+        <category>前端</category>
+        <category>随笔</category>
+        <category>博客</category>
+        <category>生信</category>
+        <category>Python</category>
+        <category>Java</category>
+        <category>生信流程分析</category>
+        <category>Linux</category>
+        <category>文章复现</category>
+        <category>绘图</category>
+        <category>分子生物学</category>
+        <category>生物</category>
+        <category>跨平台开发</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo</title>
+    <url>/2022/02/23/hexo/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1.基本操作"></a>1.基本操作</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><p><strong>清除缓存：</strong>hexo clean</p>
+</li>
+<li><p><strong>生成静态文件：</strong>hexo generate可简写为 hexo g</p>
+</li>
+<li><p><strong>启动服务器：</strong>hexo server或者 hexo s 常用参数：-p（–port）重设端口</p>
+</li>
+<li><p><strong>部署：</strong>hexo deploy可简写为hexo d，用于将网站部署到服务器上。（暂时用不到，目前都是在本地，后面我们将博客托管到GitHub Pages或Gitee Pages时才会用到此命令）<br>常用参数：-g（–generate），hexo d -g部署前预先生成静态文件，等同于 hexo g -d</p>
+</li>
+</ul>
+<p><strong>一般发布文章或者修改博客后需要这些操作：</strong>清除缓存&gt;生成静态文件&gt;启动服务器，测试没问题后再部署。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 我们可以写成一条命令</span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo d</span></span><br></pre></td></tr></table></figure>
+<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><p>1）下面文章属于三个分类：日常 &gt; 生活，日常 &gt; 随想，日记<br>2）其中生活、随想为日常的子分类，日常和日记为同级分类</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line">- [日常, 生活]</span><br><span class="line">- [日常, 随想]</span><br><span class="line">- [日记]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="2-文章模板设置"><a href="#2-文章模板设置" class="headerlink" title="2.文章模板设置"></a>2.文章模板设置</h3><blockquote>
+<p>每次使用hexo new post “post-name”新建一片文章时，只有title date tags，<br>还要手动增加 categories</p>
+</blockquote>
+<p>可以修改修改了scaffolds中的post模板。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">- []</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="3-图片无法显示"><a href="#3-图片无法显示" class="headerlink" title="3.图片无法显示"></a>3.图片无法显示</h3><blockquote>
+<p>语雀转成md文件导出，图片无法正常显示</p>
+</blockquote>
+<p>当你使用hexo上传博客时，在md文件中加上meta标签即可保证图片都能正常显示，标签如下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;no-referrer&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客</category>
+        <category>hexo</category>
+      </categories>
   </entry>
   <entry>
     <title>vue中的computed和method</title>
@@ -84,30 +147,6 @@
         <category>前端</category>
         <category>Vue</category>
       </categories>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2022/01/24/test/</url>
-    <content><![CDATA[<p>测试hexo标签和分类功能</p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>随笔</category>
-        <category>生信</category>
-        <category>Python</category>
-        <category>Java</category>
-        <category>生信流程分析</category>
-        <category>Linux</category>
-        <category>文章复现</category>
-        <category>绘图</category>
-        <category>分子生物学</category>
-        <category>生物</category>
-        <category>博客</category>
-        <category>跨平台开发</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
   </entry>
   <entry>
     <title>vue模板语法</title>
@@ -151,42 +190,6 @@
       <categories>
         <category>前端</category>
         <category>Vue</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>第六七天-知识点</title>
-    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC%E5%85%AD%E4%B8%83%E5%A4%A9-%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604088420-84b6313d-1c73-41ff-9e00-a758bb903a70.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=281&id=u54340142&margin=%5Bobject%20Object%5D&name=image.png&originHeight=264&originWidth=553&originalType=binary&ratio=1&rotation=0&showTitle=false&size=130198&status=done&style=none&taskId=u23d861f6-2422-431f-945c-e9234c9c49b&title=&width=588.5)
-> SNP:单核苷酸多态性           InDel:插入与缺失         
-
-<h3 id="变异主要分为三大类："><a href="#变异主要分为三大类：" class="headerlink" title="变异主要分为三大类："></a>变异主要分为三大类：</h3><ol>
-<li> 单核苷酸变异，（通常称为单核苷酸多态性，通俗的说法就是单个DNA碱基的不同，简称SNP）</li>
-<li> 小的Indel（Insertion 和 Deletion的简），指的是在基因组的某个位置上所发生的小片段序列的插入或者删除，其长度通常在50bp以下（这个长度范围的变异可以利用Smith-Waterman 的比对算法来获得1,2）</li>
-<li>大的结构性变异，这种类型比较多，包括长度在50bp以上的长片段序列的插入或者删除、染色体倒位，染色体内部或染色体之间的序列易位，拷贝数变异，以及一些形式更为复杂的变异。为了和SNP变异作区分，第2和第3类变异通常也被称为基因组结构性变异（Structural variation，简称SV）</li>
-</ol>
-<hr>
-<pre><code>    **DNA甲基化**（DNA methylation）为DNA化学修饰的一种形式，能够在不改变DNA序列的前提下，改变遗传表现。所谓DNA甲基化是指在DNA甲基化转移酶的作用下，在基因组CpG二核苷酸的胞嘧啶5号碳位共价键结合一个甲基基团。
-</code></pre>
-<hr>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604113430-78665c7f-f7df-4a79-a22b-ba0278e1684c.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=276&id=u7b89fe4c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=272&originWidth=519&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112683&status=done&style=none&taskId=u17f6c543-6e92-413e-a173-78be7ffa428&title=&width=527.5" alt="image.png"></p>
-<blockquote>
-<p>表达数据三张表： 样本信息表、表达矩阵、基因信息表。</p>
-</blockquote>
-<ul>
-<li>样本信息表:    每一行是一个样本，每-一列是一个表型特征(临床信息、表型特征、生化指标等)，通过项目设计得到。</li>
-<li>表达矩阵:       每一行是一个基因，每一-列是一 个样本，通过表达芯片、RNA-Seq 得到</li>
-<li>基因信息表:     每一行是一个基因，每一-列是一一个信息，通过下载、注释得到</li>
-</ul>
-<hr>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604131236-8149c591-9d03-4a0f-b053-523b60c49fed.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=313&id=u55560ac6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=299&originWidth=535&originalType=binary&ratio=1&rotation=0&showTitle=false&size=101965&status=done&style=none&taskId=u84df1eaf-c249-41d7-8b90-1a34b14e7ec&title=&width=560.5" alt="image.png"><br>现在多用 RNA-Seq</p>
-<p>TPM、TMM<br>​</p>
-<hr>
-<h3 id="转录本组装"><a href="#转录本组装" class="headerlink" title="转录本组装"></a>转录本组装</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604479510-c929d422-1bfe-45bc-adda-ae6575326a56.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=514&id=ucf7974f8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1027&originWidth=1850&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1223242&status=done&style=none&taskId=u66dd18fd-b2c0-439d-b2b1-1b00ec41278&title=&width=925" alt="image.png"><br>​</p>
-]]></content>
-      <categories>
-        <category>生信</category>
-        <category>基因课</category>
       </categories>
   </entry>
   <entry>
@@ -292,68 +295,39 @@
       </categories>
   </entry>
   <entry>
-    <title>基因课-15天入门-转录组-文献</title>
-    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E6%96%87%E7%8C%AE/</url>
+    <title>第六七天-知识点</title>
+    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E7%AC%AC%E5%85%AD%E4%B8%83%E5%A4%A9-%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
+![image.png](https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604088420-84b6313d-1c73-41ff-9e00-a758bb903a70.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=281&id=u54340142&margin=%5Bobject%20Object%5D&name=image.png&originHeight=264&originWidth=553&originalType=binary&ratio=1&rotation=0&showTitle=false&size=130198&status=done&style=none&taskId=u23d861f6-2422-431f-945c-e9234c9c49b&title=&width=588.5)
+> SNP:单核苷酸多态性           InDel:插入与缺失         
 
+<h3 id="变异主要分为三大类："><a href="#变异主要分为三大类：" class="headerlink" title="变异主要分为三大类："></a>变异主要分为三大类：</h3><ol>
+<li> 单核苷酸变异，（通常称为单核苷酸多态性，通俗的说法就是单个DNA碱基的不同，简称SNP）</li>
+<li> 小的Indel（Insertion 和 Deletion的简），指的是在基因组的某个位置上所发生的小片段序列的插入或者删除，其长度通常在50bp以下（这个长度范围的变异可以利用Smith-Waterman 的比对算法来获得1,2）</li>
+<li>大的结构性变异，这种类型比较多，包括长度在50bp以上的长片段序列的插入或者删除、染色体倒位，染色体内部或染色体之间的序列易位，拷贝数变异，以及一些形式更为复杂的变异。为了和SNP变异作区分，第2和第3类变异通常也被称为基因组结构性变异（Structural variation，简称SV）</li>
+</ol>
+<hr>
+<pre><code>    **DNA甲基化**（DNA methylation）为DNA化学修饰的一种形式，能够在不改变DNA序列的前提下，改变遗传表现。所谓DNA甲基化是指在DNA甲基化转移酶的作用下，在基因组CpG二核苷酸的胞嘧啶5号碳位共价键结合一个甲基基团。
+</code></pre>
+<hr>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604113430-78665c7f-f7df-4a79-a22b-ba0278e1684c.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=276&id=u7b89fe4c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=272&originWidth=519&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112683&status=done&style=none&taskId=u17f6c543-6e92-413e-a173-78be7ffa428&title=&width=527.5" alt="image.png"></p>
 <blockquote>
-<p><a href="https://academic.oup.com/jxb/article/66/22/7359/2893295">Transcriptome analysis of an apple (Malus × domestica) yellow fruit somatic mutation identifies a gene network module highly associated with anthocyanin and epigenetic regulation | Journal of Experimental Botany | Oxford Academic (oup.com)</a></p>
+<p>表达数据三张表： 样本信息表、表达矩阵、基因信息表。</p>
 </blockquote>
-<p>例如，这些花青素生物合成基因的直接调控因子MBW的上游调控信号的性质</p>
+<ul>
+<li>样本信息表:    每一行是一个样本，每-一列是一个表型特征(临床信息、表型特征、生化指标等)，通过项目设计得到。</li>
+<li>表达矩阵:       每一行是一个基因，每一-列是一 个样本，通过表达芯片、RNA-Seq 得到</li>
+<li>基因信息表:     每一行是一个基因，每一-列是一一个信息，通过下载、注释得到</li>
+</ul>
 <hr>
-<p>反式作用因子是转录模板上游基因编码的一类蛋白调节因子，包括激活因子和阻遏因子等，它们与顺式作用元件中的上游激活序列特异性结合，对真核生物基因的转录分别起促进和阻遏作用</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604131236-8149c591-9d03-4a0f-b053-523b60c49fed.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=313&id=u55560ac6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=299&originWidth=535&originalType=binary&ratio=1&rotation=0&showTitle=false&size=101965&status=done&style=none&taskId=u84df1eaf-c249-41d7-8b90-1a34b14e7ec&title=&width=560.5" alt="image.png"><br>现在多用 RNA-Seq</p>
+<p>TPM、TMM<br>​</p>
 <hr>
-<p>顺式作用元件（cis-acting element）存在于基因旁侧序列中能影响基因表达的序列。顺式作用元件包括启动子、增强子、调控序列和可诱导元件等，它们的作用是参与基因表达的调控。顺式作用元件本身不编码任何蛋白质，仅仅提供一个作用位点，要与反式作用因子相互作用而起作用</p>
-<h2 id="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析"><a href="#为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析" class="headerlink" title="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析"></a>为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析</h2><p>Simple Sequence Repeats 简单重复序列</p>
-<p>真核生物基因组中存在大量重复频率极高而顺序复杂性极低的串联重复序列。按重复基序的长度可将串联重复序列分为<a href="https://baike.baidu.com/item/%E5%8D%AB%E6%98%9FDNA/3764240">卫星DNA</a>（基序100-300bp）、<a href="https://baike.baidu.com/item/%E5%B0%8F%E5%8D%AB%E6%98%9FDNA/5615450">小卫星DNA</a>（基序10-60bp）、<a href="https://baike.baidu.com/item/%E5%BE%AE%E5%8D%AB%E6%98%9FDNA/6634990">微卫星DNA</a>（基序1-6bp）。和中卫星DNA（由不同大小串联重复组成）等。微卫星是由DNA复制或修复过程中DNA滑动和错配或者有丝分裂、减数分裂期姐妹染色单体不均等交换引起的。微卫星的突变率在不同物种、同一物种的不同位点或同一位点的不同等位基因间存在很大差异。尽管微卫星 DNA分布于整个基因组的不同位置，但其两端序列多是保守的单拷贝序列，根据这两端的序列设计一对特异引物，通过PCR技术将期间的核心微卫星DNA序列扩增出来，利用电泳分析技术就可以得到其长度的多态性，此即 <a href="https://baike.baidu.com/item/SSR%E6%A0%87%E8%AE%B0/10789119">SSR标记</a>的原理。</p>
-<hr>
-<hr>
-<hr>
+<h3 id="转录本组装"><a href="#转录本组装" class="headerlink" title="转录本组装"></a>转录本组装</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645604479510-c929d422-1bfe-45bc-adda-ae6575326a56.png#clientId=uab1da804-d582-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=514&id=ucf7974f8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1027&originWidth=1850&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1223242&status=done&style=none&taskId=u66dd18fd-b2c0-439d-b2b1-1b00ec41278&title=&width=925" alt="image.png"><br>​</p>
 ]]></content>
       <categories>
         <category>生信</category>
         <category>基因课</category>
-        <category>生信流程分析</category>
-        <category>转录组</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>基因课-15天入门-转录组-其他问题</title>
-    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<h3 id="1-conda-包被污染"><a href="#1-conda-包被污染" class="headerlink" title="1.conda 包被污染"></a>1.conda 包被污染</h3><p>输入R后不能进去<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618310651-d6cf3b77-649d-4e57-9590-6ec616561a8b.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=89&id=u2b37a574&margin=%5Bobject%20Object%5D&name=image.png&originHeight=132&originWidth=623&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10949&status=done&style=none&taskId=u968fa2a2-1522-42ec-9122-8c5a8b91eb2&title=&width=418.5" alt="image.png"><br>发现安装trinity后，把R的脚本改为了链接<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618344786-5edced37-add3-4e43-bcb1-6bbd7c2f7910.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=82&id=u9652d001&margin=%5Bobject%20Object%5D&name=image.png&originHeight=164&originWidth=1493&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39476&status=done&style=none&taskId=ud3f353db-0743-49cc-9211-3b483a1ca19&title=&width=746.5" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618384441-ad3f160d-6464-4c75-a87a-73e4828d368e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=78&id=u37c599e1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=115&originWidth=841&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19143&status=done&style=none&taskId=ub9382551-263f-4174-a5cb-cbaa29813a9&title=&width=571.5" alt="image.png"><br>之后，再conda一个环境，重新装R，把R的文件复制到miniconda3/bin/R 即可</p>
-<hr>
-<p>经测试，发现<strong>不可</strong>。复制过去的R打开的是那个环境的R，还需要<strong>改路径</strong>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;s@envs/R/@@&#x27; R</span><br></pre></td></tr></table></figure>
-<h3 id="2-原始文件下载的特别慢"><a href="#2-原始文件下载的特别慢" class="headerlink" title="2.原始文件下载的特别慢"></a>2.原始文件下载的特别慢</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda install sra-tools</span><br></pre></td></tr></table></figure>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618557725-b95990ef-39f8-42aa-8e46-2eb5ead9ab45.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=225&id=uf628fc07&margin=%5Bobject%20Object%5D&name=image.png&originHeight=450&originWidth=407&originalType=binary&ratio=1&rotation=0&showTitle=false&size=104389&status=done&style=none&taskId=u3ae0a4ed-0861-42c3-af4d-7c0393ce05d&title=&width=203.5" alt="image.png"><br>批量下载<br>prefetch SRR*** 下载的是*.sra</p>
-<hr>
-<p>**但是 **在服务器上用prefetch下载srr特别的慢慢</p>
-<hr>
-<p>最后用embl下载。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618588255-2be1db8b-d343-4525-981e-54f083d12d2f.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=180&id=u9c59464e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=360&originWidth=1550&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64724&status=done&style=none&taskId=uc1314b8d-cfee-4a13-90fe-daaead8136c&title=&width=775" alt="image.png"></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR217/002/SRR2176372/SRR2176372.fastq.gz</span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>embl可以下载srr和fastq格式，更改 002/SRR2176372/SRR2176372<br>002的2为SRR最后一位</p>
-</blockquote>
-<h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h3><ol>
-<li>Chrome打开ftp：把”ftp”开头的网址修改为”http”开头的网址，即可顺利访问</li>
-<li>shell并行下载 用（）&amp;</li>
-<li>重命名 </li>
-</ol>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618760168-ba3129b7-6ab6-4bd7-994d-6ff182facd1e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=124&id=u5dbc8dc8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29774&status=done&style=none&taskId=u6300fe13-5890-45c9-81e4-e7155e23cd4&title=&width=282" alt="image.png"></p>
-<ol start="4">
-<li>less 查看多个文件</li>
-</ol>
-<p><em>:n - 浏览下一个文件 :p - 浏览前一个文件</em></p>
-]]></content>
-      <categories>
-        <category>生信</category>
-        <category>基因课</category>
-        <category>生信流程分析</category>
-        <category>转录组</category>
       </categories>
   </entry>
   <entry>
@@ -412,42 +386,113 @@
       </categories>
   </entry>
   <entry>
-    <title>hexo</title>
-    <url>/2022/02/23/hexo/</url>
+    <title>基因课-15天入门-转录组-其他问题</title>
+    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
 
-<h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1.基本操作"></a>1.基本操作</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li><p><strong>清除缓存：</strong>hexo clean</p>
-</li>
-<li><p><strong>生成静态文件：</strong>hexo generate可简写为 hexo g</p>
-</li>
-<li><p><strong>启动服务器：</strong>hexo server或者 hexo s 常用参数：-p（–port）重设端口</p>
-</li>
-<li><p><strong>部署：</strong>hexo deploy可简写为hexo d，用于将网站部署到服务器上。（暂时用不到，目前都是在本地，后面我们将博客托管到GitHub Pages或Gitee Pages时才会用到此命令）<br>常用参数：-g（–generate），hexo d -g部署前预先生成静态文件，等同于 hexo g -d</p>
-</li>
-</ul>
-<p><strong>一般发布文章或者修改博客后需要这些操作：</strong>清除缓存&gt;生成静态文件&gt;启动服务器，测试没问题后再部署。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 我们可以写成一条命令</span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo d</span></span><br></pre></td></tr></table></figure>
-<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><p>1）下面文章属于三个分类：日常 &gt; 生活，日常 &gt; 随想，日记<br>2）其中生活、随想为日常的子分类，日常和日记为同级分类</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line">- [日常, 生活]</span><br><span class="line">- [日常, 随想]</span><br><span class="line">- [日记]</span><br></pre></td></tr></table></figure>
+<h3 id="1-conda-包被污染"><a href="#1-conda-包被污染" class="headerlink" title="1.conda 包被污染"></a>1.conda 包被污染</h3><p>输入R后不能进去<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618310651-d6cf3b77-649d-4e57-9590-6ec616561a8b.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=89&id=u2b37a574&margin=%5Bobject%20Object%5D&name=image.png&originHeight=132&originWidth=623&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10949&status=done&style=none&taskId=u968fa2a2-1522-42ec-9122-8c5a8b91eb2&title=&width=418.5" alt="image.png"><br>发现安装trinity后，把R的脚本改为了链接<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618344786-5edced37-add3-4e43-bcb1-6bbd7c2f7910.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=82&id=u9652d001&margin=%5Bobject%20Object%5D&name=image.png&originHeight=164&originWidth=1493&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39476&status=done&style=none&taskId=ud3f353db-0743-49cc-9211-3b483a1ca19&title=&width=746.5" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618384441-ad3f160d-6464-4c75-a87a-73e4828d368e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=78&id=u37c599e1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=115&originWidth=841&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19143&status=done&style=none&taskId=ub9382551-263f-4174-a5cb-cbaa29813a9&title=&width=571.5" alt="image.png"><br>之后，再conda一个环境，重新装R，把R的文件复制到miniconda3/bin/R 即可</p>
+<hr>
+<p>经测试，发现<strong>不可</strong>。复制过去的R打开的是那个环境的R，还需要<strong>改路径</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;s@envs/R/@@&#x27; R</span><br></pre></td></tr></table></figure>
+<h3 id="2-原始文件下载的特别慢"><a href="#2-原始文件下载的特别慢" class="headerlink" title="2.原始文件下载的特别慢"></a>2.原始文件下载的特别慢</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda install sra-tools</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618557725-b95990ef-39f8-42aa-8e46-2eb5ead9ab45.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=225&id=uf628fc07&margin=%5Bobject%20Object%5D&name=image.png&originHeight=450&originWidth=407&originalType=binary&ratio=1&rotation=0&showTitle=false&size=104389&status=done&style=none&taskId=u3ae0a4ed-0861-42c3-af4d-7c0393ce05d&title=&width=203.5" alt="image.png"><br>批量下载<br>prefetch SRR*** 下载的是*.sra</p>
+<hr>
+<p>**但是 **在服务器上用prefetch下载srr特别的慢慢</p>
+<hr>
+<p>最后用embl下载。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618588255-2be1db8b-d343-4525-981e-54f083d12d2f.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=180&id=u9c59464e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=360&originWidth=1550&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64724&status=done&style=none&taskId=uc1314b8d-cfee-4a13-90fe-daaead8136c&title=&width=775" alt="image.png"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR217/002/SRR2176372/SRR2176372.fastq.gz</span><br></pre></td></tr></table></figure>
 
 
-
-
-<h3 id="2-文章模板设置"><a href="#2-文章模板设置" class="headerlink" title="2.文章模板设置"></a>2.文章模板设置</h3><blockquote>
-<p>每次使用hexo new post “post-name”新建一片文章时，只有title date tags，<br>还要手动增加 categories</p>
+<blockquote>
+<p>embl可以下载srr和fastq格式，更改 002/SRR2176372/SRR2176372<br>002的2为SRR最后一位</p>
 </blockquote>
-<p>可以修改修改了scaffolds中的post模板。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">- []</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="3-图片无法显示"><a href="#3-图片无法显示" class="headerlink" title="3.图片无法显示"></a>3.图片无法显示</h3><blockquote>
-<p>语雀转成md文件导出，图片无法正常显示</p>
-</blockquote>
-<p>当你使用hexo上传博客时，在md文件中加上meta标签即可保证图片都能正常显示，标签如下</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;no-referrer&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h3><ol>
+<li>Chrome打开ftp：把”ftp”开头的网址修改为”http”开头的网址，即可顺利访问</li>
+<li>shell并行下载 用（）&amp;</li>
+<li>重命名 </li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618760168-ba3129b7-6ab6-4bd7-994d-6ff182facd1e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=124&id=u5dbc8dc8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29774&status=done&style=none&taskId=u6300fe13-5890-45c9-81e4-e7155e23cd4&title=&width=282" alt="image.png"></p>
+<ol start="4">
+<li>less 查看多个文件</li>
+</ol>
+<p><em>:n - 浏览下一个文件 :p - 浏览前一个文件</em></p>
 ]]></content>
       <categories>
-        <category>博客</category>
-        <category>hexo</category>
+        <category>生信</category>
+        <category>基因课</category>
+        <category>生信流程分析</category>
+        <category>转录组</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大前端是什么？</title>
+    <url>/2022/03/11/%E5%A4%A7%E5%89%8D%E7%AB%AF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h2 id="大前端是什么？"><a href="#大前端是什么？" class="headerlink" title="大前端是什么？"></a>大前端是什么？</h2><p>简单来说，大前端就是所有前端的统称，比如Android、iOS、web、Watch等，最接近用户的那一层也就是UI层，然后将其统一起来，就是大前端。大前端最大的特点在于一次开发，同时适用于所有平台，开发者不用为一个APP需要做Android和iOS两种模式而担心。大前端是web统一的时代，利用web不仅能开发出网站，更可以开发手机端web应用和移动端应用程序。</p>
+<h2 id="大前端为什么出现？"><a href="#大前端为什么出现？" class="headerlink" title="大前端为什么出现？"></a>大前端为什么出现？</h2><p>由于node的出现，前端工程师不需要依赖于后端程序而直接运行，从而前后端分离起来。所以当开发一个新产品的时候服务只需要写一次，但是面向用户的产品可能有很多，例如网站、Android客户端、iOS客户端和微信小程序等。由于各个平台使用的技术栈都不一样，代码无法复用，非常浪费人力、物力。那么有没有什么技术能够解决这一痛点呢？大前端应运而生，其实大前端的主要核心就是跨平台技术，有了跨平台技术，各个平台的差异性就抹平了，开发者只需要一套技术栈就可以开发出适用于多个平台的客户端。</p>
+<h2 id="跨平台方案简介"><a href="#跨平台方案简介" class="headerlink" title="跨平台方案简介"></a>跨平台方案简介</h2><p>目前的主流跨平台方案：Cordova/phoneGap、React Native、Weex、微信小程序、PWA和Flutter等，根据其原理性，可以分为三大类。</p>
+<ul>
+<li>H5+原生（Cordova、Ionic、微信小程序）</li>
+<li>JavaScript开发+原生渲染 （React Native、Weex、快应用）</li>
+<li>自绘UI+原生(Flutter)</li>
+<li>增强版Web App(PWA)</li>
+</ul>
+<h3 id="一、-H5-原生混合开发"><a href="#一、-H5-原生混合开发" class="headerlink" title="一、 H5+原生混合开发"></a>一、 H5+原生混合开发</h3><p>这种模式又称为Hybrid开发，现在很多App都用这种模式去开发，常见的有微信、淘宝、美团、爱奇艺等知名移动应用等。国内也有很多公司使用Hybrid模式去开发平台，供开发者使用，像Dcloud、AppCan、Inoic等，基本上都是参考Cordova衍生出的混合开发框架。<br>这类框架主要原理就是将APP的一部分需要动态变动的内容通过H5来实现，通过原生的网页加载控件WebView (Android)或WKWebView（ios）来加载，H5部分是可以随时改变而不用发版，这样就解决了动态化的需求，同时，由于h5代码只需要一次开发，就能同时在Android和iOS两个平台运行，这也可以减小开发成本，我们称这种h5+原生的开发模式为混合开发。采用混合模式开发的APP我们称之为混合应用或Hybrid APP。  </p>
+<p>  由于原生开发可以访问平台所有功能，而混合开发中，h5代码是运行在WebView中，而WebView实质上就是一个浏览器内核，其JavaScript依然运行在一个权限受限的沙箱中，所以对于大多数系统能力都没有访问权限，如无法访问文件系统、不能使用蓝牙等。所以，对于H5不能实现的功能，都需要原生去做。而混合框架一般都会在原生代码中预先实现一些访问系统能力的API， 然后暴露给WebView以供JavaScript调用，这样一来，WebView就成为了JavaScript与原生API之间通信的桥梁，主要负责JavaScript与原生之间传递调用消息，而消息的传递必须遵守一个标准的协议，它规定了消息的格式与含义，我们把依赖于WebView的用于在JavaScript与原生之间通信并实现了某种消息传输协议的工具称之为WebView JavaScript Bridge, 简称 JsBridge，它也是混合开发框架的核心。<br>混合应用的优点是动态内容是H5，使用web技术栈就可以开发，社区及资源丰富，缺点是性能不好，对于复杂用户界面或动画，webview不堪重任。</p>
+<h3 id="二、JavaScript开发-原生渲染"><a href="#二、JavaScript开发-原生渲染" class="headerlink" title="二、JavaScript开发+原生渲染"></a>二、JavaScript开发+原生渲染</h3><p>这类开源框架的代表主要是Facebook的React Native、阿里的Weex，当然也有未开源的美团的Picasso，以及最新推出的快应用。  </p>
+<p>JavaScript开发+原生渲染的方式<strong>主要优点</strong>如下：</p>
+<blockquote>
+<p>采用Web开发技术栈，社区庞大、上手快、开发成本相对较低。<br>原生渲染，性能相比H5提高很多。<br>动态化较好，支持热更新。</p>
+</blockquote>
+<p>当然也有<strong>缺点</strong>如下：</p>
+<blockquote>
+<p>渲染时需要JavaScript和原生之间通信，在有些场景如拖动可能会因为通信频繁导致卡顿。<br>JavaScript为脚本语言，执行时需要JIT，执行效率和AOT代码仍有差距。<br>+由于渲染依赖原生控件，不同平台的控件需要单独维护，并且当系统更新时，社区控件可能会滞后；除此之外，其控件系统也会受到原生UI系统限制，例如，在Android中，手势冲突消歧规则是固定的，这在使用不同人写的控件嵌套时，手势冲突问题将会变得非常棘手。</p>
+</blockquote>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="1-React-Native"><a href="#1-React-Native" class="headerlink" title="1.React Native"></a>1.React Native</h4><p>React Native (简称RN)是Facebook于2015年4月开源的跨平台移动应用开发框架，是Facebook早先开源的JS框架 React 在原生移动应用平台的衍生产物，目前支持iOS和Android两个平台。RN使用Javascript语言，类似于HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员只需很少的学习就可以进入移动应用开发领域。<br>React Native的原理和React设计一致，React中虚拟DOM最终会映射为浏览器DOM树，而RN中虚拟DOM会通过 JavaScriptCore 映射为原生控件树。<br>JavaScriptCore 是一个JavaScript解释器，它在React Native中主要有两个作用：<br>为JavaScript提供运行环境。<br>是JavaScript与原生应用之间通信的桥梁，作用和JsBridge一样，事实上，在iOS中，很多JsBridge的实现都是基于 JavaScriptCore 。<br>而RN中将虚拟DOM映射为原生控件的过程中分两步：<br>布局消息传递； 将虚拟DOM布局信息传递给原生<br>原生根据布局信息通过对应的原生控件渲染控件树<br>由于React Native是原生控件渲染，所以性能会比混合应用中H5好很多，同时React Native是Web开发技术栈，只需维护一份代码，即可在多个平台上使用。</p>
+<h4 id="2-Weex"><a href="#2-Weex" class="headerlink" title="2.Weex"></a>2.Weex</h4><p>Weex是阿里巴巴于2016年发布的跨平台移动端开发框架，思想及原理和React Native类似，最大的不同是语法层面，React Native使用React.js作为开发框架，而Weex则使用Vue.js作为开发框架。Vue和React堪称前端领域最火的JavaScript框架，它们的易用性和功能性都非常强大，Weex在淘宝上也有广泛的应用。</p>
+<h4 id="3-快应用"><a href="#3-快应用" class="headerlink" title="3.快应用"></a>3.快应用</h4><p>快应用是华为、小米、OPPO、魅族等国内9大主流手机厂商共同制定的轻量级应用标准，目标直指微信小程序。它也是采用JavaScript语言开发，原生控件渲染，与React Native和Weex相比主要有两点不同：<br>快应用自身不支持Vue或React语法，其采用原生JavaScript开发，其开发框架和微信小程序很像，值得一提的是小程序目前已经可以使用Vue语法开发（mpvue），从原理上来讲，Vue的语法也可以移植到快应用上。<br>React Native和Weex的渲染/排版引擎是集成到框架中的，每一个APP都需要打包一份，安装包体积较大；而快应用渲染/排版引擎是集成到ROM中的，应用中无需打包，安装包体积小，正因如此，快应用才能在保证性能的同时做到快速分发。</p>
+<h2 id="三、自绘UI-原生"><a href="#三、自绘UI-原生" class="headerlink" title="三、自绘UI+原生"></a>三、自绘UI+原生</h2><p>通过在不同平台实现一个统一接口的渲染引擎来绘制UI，而不依赖系统原生控件，所以可以做到不同平台UI的一致性。注意，自绘引擎解决的是UI的跨平台问题，如果涉及其它系统能力调用，依然要涉及原生开发。这种平台技术的优点如下：</p>
+<ul>
+<li>性能高；由于自绘引擎是直接调用系统API来绘制UI，所以性能和原生控件接近。</li>
+<li>灵活、组件库易维护、UI外观保真度和一致性高；由于UI渲染不依赖原生控件，也就不需要根据不同平台的控件单独维护一套组件库，所以代码容易维护。由于组件库是同一套代码、同一个渲染引擎，所以在不同平台，组件显示外观可以做到高保真和高一致性；</li>
+<li>另外，由于不依赖原生控件，也就不会受原生布局系统的限制，这样布局系统会非常灵活。</li>
+</ul>
+<p><strong>不足之处：</strong><br>动态性不足：为了保证UI绘制性能，自绘UI系统一般都会采用AOT模式编译其发布包，所以应用发布后，不能像Hybrid和RN那些使用JavaScript（JIT）作为开发语言的框架那样动态下发代码。</p>
+<h2 id="四、PWA-Progress-Web-App"><a href="#四、PWA-Progress-Web-App" class="headerlink" title="四、PWA(Progress Web App)"></a>四、PWA(Progress Web App)</h2><p>PWA不属于上述跨平台开发的某一种，它是一种理念，PWA 本质上是 Web App，借助一些新技术也具备了 Native App 的一些特性，比如离线能力、本地缓存、和通知推送，兼具 Web App 和 Native App 的优点，看起来更像一个原生App。PWA完全使用前端技术栈，不过它需要手机和浏览器的支持，目前支持ServiceWorker和Google Play Service的Android手机，以及搭载11.3以上的iOS手机可以使用PWA。由于国内手机厂商和浏览器厂商的统一性问题，PWA在国内发展不是很好，但是在国外并没有这些问题。</p>
+<blockquote>
+<p>作者：IT科技时代<br>链接：<a href="http://www.imooc.com/article/283259?block_id=tuijian_wz">http://www.imooc.com/article/283259?block_id=tuijian_wz</a><br>来源：慕课网</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>大前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>基因课-15天入门-转录组-文献</title>
+    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E6%96%87%E7%8C%AE/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<blockquote>
+<p><a href="https://academic.oup.com/jxb/article/66/22/7359/2893295">Transcriptome analysis of an apple (Malus × domestica) yellow fruit somatic mutation identifies a gene network module highly associated with anthocyanin and epigenetic regulation | Journal of Experimental Botany | Oxford Academic (oup.com)</a></p>
+</blockquote>
+<p>例如，这些花青素生物合成基因的直接调控因子MBW的上游调控信号的性质</p>
+<hr>
+<p>反式作用因子是转录模板上游基因编码的一类蛋白调节因子，包括激活因子和阻遏因子等，它们与顺式作用元件中的上游激活序列特异性结合，对真核生物基因的转录分别起促进和阻遏作用</p>
+<hr>
+<p>顺式作用元件（cis-acting element）存在于基因旁侧序列中能影响基因表达的序列。顺式作用元件包括启动子、增强子、调控序列和可诱导元件等，它们的作用是参与基因表达的调控。顺式作用元件本身不编码任何蛋白质，仅仅提供一个作用位点，要与反式作用因子相互作用而起作用</p>
+<h2 id="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析"><a href="#为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析" class="headerlink" title="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析"></a>为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析</h2><p>Simple Sequence Repeats 简单重复序列</p>
+<p>真核生物基因组中存在大量重复频率极高而顺序复杂性极低的串联重复序列。按重复基序的长度可将串联重复序列分为<a href="https://baike.baidu.com/item/%E5%8D%AB%E6%98%9FDNA/3764240">卫星DNA</a>（基序100-300bp）、<a href="https://baike.baidu.com/item/%E5%B0%8F%E5%8D%AB%E6%98%9FDNA/5615450">小卫星DNA</a>（基序10-60bp）、<a href="https://baike.baidu.com/item/%E5%BE%AE%E5%8D%AB%E6%98%9FDNA/6634990">微卫星DNA</a>（基序1-6bp）。和中卫星DNA（由不同大小串联重复组成）等。微卫星是由DNA复制或修复过程中DNA滑动和错配或者有丝分裂、减数分裂期姐妹染色单体不均等交换引起的。微卫星的突变率在不同物种、同一物种的不同位点或同一位点的不同等位基因间存在很大差异。尽管微卫星 DNA分布于整个基因组的不同位置，但其两端序列多是保守的单拷贝序列，根据这两端的序列设计一对特异引物，通过PCR技术将期间的核心微卫星DNA序列扩增出来，利用电泳分析技术就可以得到其长度的多态性，此即 <a href="https://baike.baidu.com/item/SSR%E6%A0%87%E8%AE%B0/10789119">SSR标记</a>的原理。</p>
+<hr>
+<hr>
+<hr>
+]]></content>
+      <categories>
+        <category>生信</category>
+        <category>基因课</category>
+        <category>生信流程分析</category>
+        <category>转录组</category>
       </categories>
   </entry>
   <entry>
