@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>electron是什么</title>
+    <url>/2022/03/15/electron%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+## Electron是什么？
+
+<hr>
+<blockquote>
+<ol>
+<li><p>Electron 是由 Github 开发的开源框架</p>
+</li>
+<li><p>它允许开发者使用 Web 技术构建跨平台的桌面应用</p>
+</li>
+<li><p>Electron = Chromium + Node.js + Native API</p>
+<blockquote>
+<ul>
+<li>Chromium : 为Electron提供了强大的UI能力，可以不考虑兼容性的情况下，利用强大的Web生态来开发界面。</li>
+<li>Node.js ：让Electron有了底层的操作能力，比如文件的读写，甚至是集成C++等等操作，并可以使用大量开源的npm包来完成开发需求。</li>
+<li>Native API ： Native API让Electron有了跨平台和桌面端的原生能力，比如说它有统一的原生界面，窗口、托盘这些。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<h2 id="什么时候使用Electron"><a href="#什么时候使用Electron" class="headerlink" title="什么时候使用Electron"></a>什么时候使用Electron</h2><hr>
+<ol>
+<li>公司没有专门的桌面应用开发者，而需要前端兼顾来进行开发时，用Electron就是一个不错的选择。</li>
+<li>一个应用同时开发Web端和桌面端的时候，那使用Electron来进行开发就对了。</li>
+<li>开发一些效率工具，比如说我们的VSCode，比如说一些API类的工具，用Electron都是不错的选择。</li>
+</ol>
+<h2 id="有哪些著名应用是用Electron开发的"><a href="#有哪些著名应用是用Electron开发的" class="headerlink" title="有哪些著名应用是用Electron开发的"></a>有哪些著名应用是用Electron开发的</h2><hr>
+<ul>
+<li>VSCode ： 程序员最常用的开发者工具。</li>
+<li>Atom : 是Github开发的文本编辑器，我想大部分的前端程序员都应该使用过。</li>
+<li>slack ： 聊天群组 + 大规模工具集成 + 文件整合 + 搜索的一个工具。就是把很多你常用的工具整合到了一起。</li>
+<li>wordPress ： 基于PHP开发的Blog搭建工具，新版本使用了Electron</li>
+</ul>
+<blockquote>
+<p>原文：<a href="https://www.jspang.com/article/62#toc33">https://www.jspang.com/article/62#toc33</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>大前端</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/01/23/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -91,6 +137,25 @@
       </tags>
   </entry>
   <entry>
+    <title>vue中的computed和method</title>
+    <url>/2022/02/21/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cmethod/</url>
+    <content><![CDATA[<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;example&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: &quot;&#123;&#123; message &#125;&#125;&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Computed reversed message: &quot;&#123;&#123; reversedMessage &#125;&#125;&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#example&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="comment">// 计算属性的 getter</span></span><br><span class="line">    <span class="attr">reversedMessage</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `this` 指向 vm 实例</span></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.message.split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>computed定义的方法我们是以属性的形式访问的，和data里的属性访问形式一样，</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--HTML部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test1&quot;</span>&gt;</span>&#123;&#123;methodTest&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test2-1&quot;</span>&gt;</span>&#123;&#123;methodTest()&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test3-1&quot;</span>&gt;</span>&#123;&#123;computedTest&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--script部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="javascript">    <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">message</span>: <span class="string">&#x27;我是消息，&#x27;</span></span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">methodTest</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.message + <span class="string">&#x27;现在我用的是methods&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">computed</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">computedTest</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.message + <span class="string">&#x27;现在我用的是computed&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>methods定义的方法，我们必须要加上()来调用，如methodTest()</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ol>
+<li>computed是<strong>属性访问</strong>，而methods是<strong>函数调用</strong></li>
+<li>computed带有<strong>缓存功能</strong>，而methods不是</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>computed其实是就是<strong>属性</strong>，之所以与data区分开，只不过为了<strong>防止文本插值中逻辑过重，会导致不易维护</strong></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+  </entry>
+  <entry>
     <title>hexo</title>
     <url>/2022/02/23/hexo/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -127,25 +192,6 @@
       <categories>
         <category>博客</category>
         <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>vue中的computed和method</title>
-    <url>/2022/02/21/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cmethod/</url>
-    <content><![CDATA[<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;example&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: &quot;&#123;&#123; message &#125;&#125;&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Computed reversed message: &quot;&#123;&#123; reversedMessage &#125;&#125;&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#example&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="comment">// 计算属性的 getter</span></span><br><span class="line">    <span class="attr">reversedMessage</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `this` 指向 vm 实例</span></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.message.split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>computed定义的方法我们是以属性的形式访问的，和data里的属性访问形式一样，</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--HTML部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test1&quot;</span>&gt;</span>&#123;&#123;methodTest&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test2-1&quot;</span>&gt;</span>&#123;&#123;methodTest()&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;test3-1&quot;</span>&gt;</span>&#123;&#123;computedTest&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--script部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="javascript">    <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">message</span>: <span class="string">&#x27;我是消息，&#x27;</span></span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">methodTest</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.message + <span class="string">&#x27;现在我用的是methods&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">computed</span>: &#123;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="title">computedTest</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> <span class="built_in">this</span>.message + <span class="string">&#x27;现在我用的是computed&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">&#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>methods定义的方法，我们必须要加上()来调用，如methodTest()</p>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ol>
-<li>computed是<strong>属性访问</strong>，而methods是<strong>函数调用</strong></li>
-<li>computed带有<strong>缓存功能</strong>，而methods不是</li>
-</ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>computed其实是就是<strong>属性</strong>，之所以与data区分开，只不过为了<strong>防止文本插值中逻辑过重，会导致不易维护</strong></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-        <category>Vue</category>
       </categories>
   </entry>
   <entry>
@@ -331,6 +377,65 @@
       </categories>
   </entry>
   <entry>
+    <title>基因课-15天入门-转录组-其他问题</title>
+    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<h3 id="1-conda-包被污染"><a href="#1-conda-包被污染" class="headerlink" title="1.conda 包被污染"></a>1.conda 包被污染</h3><p>输入R后不能进去<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618310651-d6cf3b77-649d-4e57-9590-6ec616561a8b.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=89&id=u2b37a574&margin=%5Bobject%20Object%5D&name=image.png&originHeight=132&originWidth=623&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10949&status=done&style=none&taskId=u968fa2a2-1522-42ec-9122-8c5a8b91eb2&title=&width=418.5" alt="image.png"><br>发现安装trinity后，把R的脚本改为了链接<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618344786-5edced37-add3-4e43-bcb1-6bbd7c2f7910.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=82&id=u9652d001&margin=%5Bobject%20Object%5D&name=image.png&originHeight=164&originWidth=1493&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39476&status=done&style=none&taskId=ud3f353db-0743-49cc-9211-3b483a1ca19&title=&width=746.5" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618384441-ad3f160d-6464-4c75-a87a-73e4828d368e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=78&id=u37c599e1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=115&originWidth=841&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19143&status=done&style=none&taskId=ub9382551-263f-4174-a5cb-cbaa29813a9&title=&width=571.5" alt="image.png"><br>之后，再conda一个环境，重新装R，把R的文件复制到miniconda3/bin/R 即可</p>
+<hr>
+<p>经测试，发现<strong>不可</strong>。复制过去的R打开的是那个环境的R，还需要<strong>改路径</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;s@envs/R/@@&#x27; R</span><br></pre></td></tr></table></figure>
+<h3 id="2-原始文件下载的特别慢"><a href="#2-原始文件下载的特别慢" class="headerlink" title="2.原始文件下载的特别慢"></a>2.原始文件下载的特别慢</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda install sra-tools</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618557725-b95990ef-39f8-42aa-8e46-2eb5ead9ab45.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=225&id=uf628fc07&margin=%5Bobject%20Object%5D&name=image.png&originHeight=450&originWidth=407&originalType=binary&ratio=1&rotation=0&showTitle=false&size=104389&status=done&style=none&taskId=u3ae0a4ed-0861-42c3-af4d-7c0393ce05d&title=&width=203.5" alt="image.png"><br>批量下载<br>prefetch SRR*** 下载的是*.sra</p>
+<hr>
+<p>**但是 **在服务器上用prefetch下载srr特别的慢慢</p>
+<hr>
+<p>最后用embl下载。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618588255-2be1db8b-d343-4525-981e-54f083d12d2f.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=180&id=u9c59464e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=360&originWidth=1550&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64724&status=done&style=none&taskId=uc1314b8d-cfee-4a13-90fe-daaead8136c&title=&width=775" alt="image.png"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR217/002/SRR2176372/SRR2176372.fastq.gz</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>embl可以下载srr和fastq格式，更改 002/SRR2176372/SRR2176372<br>002的2为SRR最后一位</p>
+</blockquote>
+<h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h3><ol>
+<li>Chrome打开ftp：把”ftp”开头的网址修改为”http”开头的网址，即可顺利访问</li>
+<li>shell并行下载 用（）&amp;</li>
+<li>重命名 </li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618760168-ba3129b7-6ab6-4bd7-994d-6ff182facd1e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=124&id=u5dbc8dc8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29774&status=done&style=none&taskId=u6300fe13-5890-45c9-81e4-e7155e23cd4&title=&width=282" alt="image.png"></p>
+<ol start="4">
+<li>less 查看多个文件</li>
+</ol>
+<p><em>:n - 浏览下一个文件 :p - 浏览前一个文件</em></p>
+]]></content>
+      <categories>
+        <category>生信</category>
+        <category>基因课</category>
+        <category>生信流程分析</category>
+        <category>转录组</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>基因课15天入门生物信息总述</title>
+    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE15%E5%A4%A9%E5%85%A5%E9%97%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E6%80%BB%E8%BF%B0/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer" />
+
+<blockquote>
+<p>官网视频：<a href="https://genek-pc.duanshu.com/course/detail/455dbc620a5242fd800dfdc508d978b7">genek.cn</a><br>b站：<a href="https://www.bilibili.com/video/BV1K44y1B7Dg">https://www.bilibili.com/video/BV1K44y1B7Dg</a></p>
+</blockquote>
+<h3 id="第一天-测序原理"><a href="#第一天-测序原理" class="headerlink" title="第一天 测序原理"></a>第一天 测序原理</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603138118-b3e5d773-3a0e-4bdf-9968-61a1ab1a01b1.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=248&id=u141e023a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=528&originalType=binary&ratio=1&rotation=0&showTitle=false&size=65730&status=done&style=none&taskId=u229641e0-a56b-4483-ac46-3b58e878497&title=&width=529" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603159789-b2771f37-49f5-4c1f-a6d4-96344a056f32.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=270&id=u4569556a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=292&originWidth=553&originalType=binary&ratio=1&rotation=0&showTitle=false&size=114333&status=done&style=none&taskId=ud03b4e0b-4871-45d2-8b09-0730d851654&title=&width=510.5" alt="image.png"></p>
+<blockquote>
+<p>前半部分：标准化分析，在linux              后半部分：个性化分析，在Windows</p>
+</blockquote>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="第二天-linux介绍与虚拟机安装"><a href="#第二天-linux介绍与虚拟机安装" class="headerlink" title="第二天 linux介绍与虚拟机安装"></a>第二天 linux介绍与虚拟机安装</h3><h3 id="第三天-linux基础命令"><a href="#第三天-linux基础命令" class="headerlink" title="第三天 linux基础命令"></a>第三天 linux基础命令</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603376812-ab377dc2-d834-450d-b062-33c4212ce0ec.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1566&id=u2e5030b9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=3132&originWidth=4512&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1061387&status=done&style=none&taskId=u5b0b0880-4375-4ded-b6c4-55984f582b3&title=&width=2256" alt="image.png"></p>
+]]></content>
+      <categories>
+        <category>生信</category>
+        <category>基因课</category>
+      </categories>
+  </entry>
+  <entry>
     <title>基因课-15天入门-转录组-14天功能富集</title>
     <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-14%E5%A4%A9%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
@@ -386,36 +491,23 @@
       </categories>
   </entry>
   <entry>
-    <title>基因课-15天入门-转录组-其他问题</title>
-    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/</url>
+    <title>基因课-15天入门-转录组-文献</title>
+    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E6%96%87%E7%8C%AE/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer" />
 
-<h3 id="1-conda-包被污染"><a href="#1-conda-包被污染" class="headerlink" title="1.conda 包被污染"></a>1.conda 包被污染</h3><p>输入R后不能进去<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618310651-d6cf3b77-649d-4e57-9590-6ec616561a8b.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=89&id=u2b37a574&margin=%5Bobject%20Object%5D&name=image.png&originHeight=132&originWidth=623&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10949&status=done&style=none&taskId=u968fa2a2-1522-42ec-9122-8c5a8b91eb2&title=&width=418.5" alt="image.png"><br>发现安装trinity后，把R的脚本改为了链接<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618344786-5edced37-add3-4e43-bcb1-6bbd7c2f7910.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=82&id=u9652d001&margin=%5Bobject%20Object%5D&name=image.png&originHeight=164&originWidth=1493&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39476&status=done&style=none&taskId=ud3f353db-0743-49cc-9211-3b483a1ca19&title=&width=746.5" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618384441-ad3f160d-6464-4c75-a87a-73e4828d368e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=78&id=u37c599e1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=115&originWidth=841&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19143&status=done&style=none&taskId=ub9382551-263f-4174-a5cb-cbaa29813a9&title=&width=571.5" alt="image.png"><br>之后，再conda一个环境，重新装R，把R的文件复制到miniconda3/bin/R 即可</p>
-<hr>
-<p>经测试，发现<strong>不可</strong>。复制过去的R打开的是那个环境的R，还需要<strong>改路径</strong>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sed -i &#x27;s@envs/R/@@&#x27; R</span><br></pre></td></tr></table></figure>
-<h3 id="2-原始文件下载的特别慢"><a href="#2-原始文件下载的特别慢" class="headerlink" title="2.原始文件下载的特别慢"></a>2.原始文件下载的特别慢</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda install sra-tools</span><br></pre></td></tr></table></figure>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618557725-b95990ef-39f8-42aa-8e46-2eb5ead9ab45.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=225&id=uf628fc07&margin=%5Bobject%20Object%5D&name=image.png&originHeight=450&originWidth=407&originalType=binary&ratio=1&rotation=0&showTitle=false&size=104389&status=done&style=none&taskId=u3ae0a4ed-0861-42c3-af4d-7c0393ce05d&title=&width=203.5" alt="image.png"><br>批量下载<br>prefetch SRR*** 下载的是*.sra</p>
-<hr>
-<p>**但是 **在服务器上用prefetch下载srr特别的慢慢</p>
-<hr>
-<p>最后用embl下载。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618588255-2be1db8b-d343-4525-981e-54f083d12d2f.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=180&id=u9c59464e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=360&originWidth=1550&originalType=binary&ratio=1&rotation=0&showTitle=false&size=64724&status=done&style=none&taskId=uc1314b8d-cfee-4a13-90fe-daaead8136c&title=&width=775" alt="image.png"></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR217/002/SRR2176372/SRR2176372.fastq.gz</span><br></pre></td></tr></table></figure>
-
-
 <blockquote>
-<p>embl可以下载srr和fastq格式，更改 002/SRR2176372/SRR2176372<br>002的2为SRR最后一位</p>
+<p><a href="https://academic.oup.com/jxb/article/66/22/7359/2893295">Transcriptome analysis of an apple (Malus × domestica) yellow fruit somatic mutation identifies a gene network module highly associated with anthocyanin and epigenetic regulation | Journal of Experimental Botany | Oxford Academic (oup.com)</a></p>
 </blockquote>
-<h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h3><ol>
-<li>Chrome打开ftp：把”ftp”开头的网址修改为”http”开头的网址，即可顺利访问</li>
-<li>shell并行下载 用（）&amp;</li>
-<li>重命名 </li>
-</ol>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645618760168-ba3129b7-6ab6-4bd7-994d-6ff182facd1e.png#clientId=ub0a49814-8ade-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=124&id=u5dbc8dc8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29774&status=done&style=none&taskId=u6300fe13-5890-45c9-81e4-e7155e23cd4&title=&width=282" alt="image.png"></p>
-<ol start="4">
-<li>less 查看多个文件</li>
-</ol>
-<p><em>:n - 浏览下一个文件 :p - 浏览前一个文件</em></p>
+<p>例如，这些花青素生物合成基因的直接调控因子MBW的上游调控信号的性质</p>
+<hr>
+<p>反式作用因子是转录模板上游基因编码的一类蛋白调节因子，包括激活因子和阻遏因子等，它们与顺式作用元件中的上游激活序列特异性结合，对真核生物基因的转录分别起促进和阻遏作用</p>
+<hr>
+<p>顺式作用元件（cis-acting element）存在于基因旁侧序列中能影响基因表达的序列。顺式作用元件包括启动子、增强子、调控序列和可诱导元件等，它们的作用是参与基因表达的调控。顺式作用元件本身不编码任何蛋白质，仅仅提供一个作用位点，要与反式作用因子相互作用而起作用</p>
+<h2 id="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析"><a href="#为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析" class="headerlink" title="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析"></a>为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析</h2><p>Simple Sequence Repeats 简单重复序列</p>
+<p>真核生物基因组中存在大量重复频率极高而顺序复杂性极低的串联重复序列。按重复基序的长度可将串联重复序列分为<a href="https://baike.baidu.com/item/%E5%8D%AB%E6%98%9FDNA/3764240">卫星DNA</a>（基序100-300bp）、<a href="https://baike.baidu.com/item/%E5%B0%8F%E5%8D%AB%E6%98%9FDNA/5615450">小卫星DNA</a>（基序10-60bp）、<a href="https://baike.baidu.com/item/%E5%BE%AE%E5%8D%AB%E6%98%9FDNA/6634990">微卫星DNA</a>（基序1-6bp）。和中卫星DNA（由不同大小串联重复组成）等。微卫星是由DNA复制或修复过程中DNA滑动和错配或者有丝分裂、减数分裂期姐妹染色单体不均等交换引起的。微卫星的突变率在不同物种、同一物种的不同位点或同一位点的不同等位基因间存在很大差异。尽管微卫星 DNA分布于整个基因组的不同位置，但其两端序列多是保守的单拷贝序列，根据这两端的序列设计一对特异引物，通过PCR技术将期间的核心微卫星DNA序列扩增出来，利用电泳分析技术就可以得到其长度的多态性，此即 <a href="https://baike.baidu.com/item/SSR%E6%A0%87%E8%AE%B0/10789119">SSR标记</a>的原理。</p>
+<hr>
+<hr>
+<hr>
 ]]></content>
       <categories>
         <category>生信</category>
@@ -467,52 +559,6 @@
       <categories>
         <category>前端</category>
         <category>大前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>基因课-15天入门-转录组-文献</title>
-    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE-15%E5%A4%A9%E5%85%A5%E9%97%A8-%E8%BD%AC%E5%BD%95%E7%BB%84-%E6%96%87%E7%8C%AE/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<blockquote>
-<p><a href="https://academic.oup.com/jxb/article/66/22/7359/2893295">Transcriptome analysis of an apple (Malus × domestica) yellow fruit somatic mutation identifies a gene network module highly associated with anthocyanin and epigenetic regulation | Journal of Experimental Botany | Oxford Academic (oup.com)</a></p>
-</blockquote>
-<p>例如，这些花青素生物合成基因的直接调控因子MBW的上游调控信号的性质</p>
-<hr>
-<p>反式作用因子是转录模板上游基因编码的一类蛋白调节因子，包括激活因子和阻遏因子等，它们与顺式作用元件中的上游激活序列特异性结合，对真核生物基因的转录分别起促进和阻遏作用</p>
-<hr>
-<p>顺式作用元件（cis-acting element）存在于基因旁侧序列中能影响基因表达的序列。顺式作用元件包括启动子、增强子、调控序列和可诱导元件等，它们的作用是参与基因表达的调控。顺式作用元件本身不编码任何蛋白质，仅仅提供一个作用位点，要与反式作用因子相互作用而起作用</p>
-<h2 id="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析"><a href="#为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记-补充表S1-对3棵独立嫁接的富士株系进行了遗传指纹分析" class="headerlink" title="为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析"></a>为了确定KID和BLO之间的亲本关系和运动关系，用16个SSR标记(补充表S1)对3棵独立嫁接的富士株系进行了遗传指纹分析</h2><p>Simple Sequence Repeats 简单重复序列</p>
-<p>真核生物基因组中存在大量重复频率极高而顺序复杂性极低的串联重复序列。按重复基序的长度可将串联重复序列分为<a href="https://baike.baidu.com/item/%E5%8D%AB%E6%98%9FDNA/3764240">卫星DNA</a>（基序100-300bp）、<a href="https://baike.baidu.com/item/%E5%B0%8F%E5%8D%AB%E6%98%9FDNA/5615450">小卫星DNA</a>（基序10-60bp）、<a href="https://baike.baidu.com/item/%E5%BE%AE%E5%8D%AB%E6%98%9FDNA/6634990">微卫星DNA</a>（基序1-6bp）。和中卫星DNA（由不同大小串联重复组成）等。微卫星是由DNA复制或修复过程中DNA滑动和错配或者有丝分裂、减数分裂期姐妹染色单体不均等交换引起的。微卫星的突变率在不同物种、同一物种的不同位点或同一位点的不同等位基因间存在很大差异。尽管微卫星 DNA分布于整个基因组的不同位置，但其两端序列多是保守的单拷贝序列，根据这两端的序列设计一对特异引物，通过PCR技术将期间的核心微卫星DNA序列扩增出来，利用电泳分析技术就可以得到其长度的多态性，此即 <a href="https://baike.baidu.com/item/SSR%E6%A0%87%E8%AE%B0/10789119">SSR标记</a>的原理。</p>
-<hr>
-<hr>
-<hr>
-]]></content>
-      <categories>
-        <category>生信</category>
-        <category>基因课</category>
-        <category>生信流程分析</category>
-        <category>转录组</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>基因课15天入门生物信息总述</title>
-    <url>/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE15%E5%A4%A9%E5%85%A5%E9%97%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E6%80%BB%E8%BF%B0/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer" />
-
-<blockquote>
-<p>官网视频：<a href="https://genek-pc.duanshu.com/course/detail/455dbc620a5242fd800dfdc508d978b7">genek.cn</a><br>b站：<a href="https://www.bilibili.com/video/BV1K44y1B7Dg">https://www.bilibili.com/video/BV1K44y1B7Dg</a></p>
-</blockquote>
-<h3 id="第一天-测序原理"><a href="#第一天-测序原理" class="headerlink" title="第一天 测序原理"></a>第一天 测序原理</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603138118-b3e5d773-3a0e-4bdf-9968-61a1ab1a01b1.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=248&id=u141e023a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=528&originalType=binary&ratio=1&rotation=0&showTitle=false&size=65730&status=done&style=none&taskId=u229641e0-a56b-4483-ac46-3b58e878497&title=&width=529" alt="image.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603159789-b2771f37-49f5-4c1f-a6d4-96344a056f32.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=270&id=u4569556a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=292&originWidth=553&originalType=binary&ratio=1&rotation=0&showTitle=false&size=114333&status=done&style=none&taskId=ud03b4e0b-4871-45d2-8b09-0730d851654&title=&width=510.5" alt="image.png"></p>
-<blockquote>
-<p>前半部分：标准化分析，在linux              后半部分：个性化分析，在Windows</p>
-</blockquote>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="第二天-linux介绍与虚拟机安装"><a href="#第二天-linux介绍与虚拟机安装" class="headerlink" title="第二天 linux介绍与虚拟机安装"></a>第二天 linux介绍与虚拟机安装</h3><h3 id="第三天-linux基础命令"><a href="#第三天-linux基础命令" class="headerlink" title="第三天 linux基础命令"></a>第三天 linux基础命令</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603376812-ab377dc2-d834-450d-b062-33c4212ce0ec.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1566&id=u2e5030b9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=3132&originWidth=4512&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1061387&status=done&style=none&taskId=u5b0b0880-4375-4ded-b6c4-55984f582b3&title=&width=2256" alt="image.png"></p>
-]]></content>
-      <categories>
-        <category>生信</category>
-        <category>基因课</category>
       </categories>
   </entry>
 </search>
