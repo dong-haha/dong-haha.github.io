@@ -186,6 +186,221 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/25/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E6%95%B4%E4%BD%93%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/25/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E6%95%B4%E4%BD%93%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">桌面应用整体布局</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-25 21:04:02 / 修改时间：21:05:03" itemprop="dateCreated datePublished" datetime="2022-04-25T21:04:02+08:00">2022-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">桌面应用开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+<h2 id="1-技术选取"><a href="#1-技术选取" class="headerlink" title="1. 技术选取"></a>1. 技术选取</h2><ol>
+<li>vue2+element ui</li>
+<li>electron-egg =2.0 </li>
+<li>express = 4.17</li>
+<li>R = 4.1</li>
+</ol>
+<h2 id="2-详细介绍"><a href="#2-详细介绍" class="headerlink" title="2. 详细介绍"></a>2. 详细介绍</h2><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1650803920183-e2b49281-f7ac-40b6-a0d4-683df46ef097.png#clientId=u29abb7b2-54cf-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=643&id=ue8919b74&margin=%5Bobject%20Object%5D&name=image.png&originHeight=965&originWidth=1480&originalType=binary&ratio=1&rotation=0&showTitle=false&size=295904&status=done&style=none&taskId=uf3478616-f3e8-4977-a7f5-85c91e69947&title=&width=986.6666666666666" alt="image.png"></p>
+<ol>
+<li><p>首先用vue搭建前端页面，其实也是在原有ee框架的模板上改动。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import router from &#x27;./router&#x27;</span><br><span class="line">import &#123; VueAxios &#125; from &#x27;./utils/request&#x27;</span><br><span class="line">import IpcRenderer from &#x27;@/utils/ipcRenderer&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import ElementUI from &#x27;element-ui&#x27;;</span><br><span class="line">// 引入ElementUI全部样式</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;;</span><br><span class="line"></span><br><span class="line">// 全局引入global</span><br><span class="line">import global from &quot;@/global/global&quot;</span><br><span class="line">Vue.prototype.global = global</span><br><span class="line"></span><br><span class="line"> Vue.config.devtools = true</span><br><span class="line"></span><br><span class="line">// 使用antd</span><br><span class="line">Vue.use(antd)</span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI)</span><br><span class="line"></span><br><span class="line">// mount axios to `Vue.$http` and `this.$http`</span><br><span class="line">Vue.use(VueAxios)</span><br><span class="line"></span><br><span class="line">// 全局注入IPC通信</span><br><span class="line">Vue.use(IpcRenderer)</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = false</span><br></pre></td></tr></table></figure>
+<p>把原项目的ant ui改成 element ui，我习惯用后者。然后就是路由和子路由</p>
+</li>
+<li><p>vue与electron通信，用的 IpcRenderer，原框架作者封装的，原理咋也不懂，用就完了。框架提供了很多通信demo,后期开发很方便</p>
+</li>
+<li><p>express来写vue用的接口，因为本来就是node环境，直接用node写接口多方便，不用java和PHP</p>
+</li>
+<li><p>整个项目用的electron比较少，主要是用它提供的桌面应用的壳子，和平时web开发差不多，只有一些文件操作用electron调用node的fs模块</p>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><p>在vue中全局引入global变量，来告诉每个组件当前ip。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> RemoteIP = <span class="string">&quot;http://1.15.**.61:8333/&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> LocalIP = <span class="string">&quot;http://localhost:8333/&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> defaultIP = <span class="string">&quot;http://localhost:8333/&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  RemoteIP,</span><br><span class="line">  LocalIP,</span><br><span class="line">  defaultIP,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>软件默认是本地运行的，express开在本地的8333端口，用户可以改成远程ip，然后把express代码原封不动（真的啥也没改），放到服务器运行，就行了。就相当于把后端搬到用户桌面运行了。</p>
+</li>
+<li><p>express框架。首先，ee框架是自带http服务的，可以直接用它的写后端。但是因为我还要在自己服</p>
+</li>
+</ol>
+<p>务器运行，就不能用它的框架写。这样就只用写一份，两地运行了。<br>     但是测试时，我都是先开npm run serve 开vue，再node  ./bin/www开express，这合到一起，问题就是，这后端代码放哪，在哪引入啊。<br>我也对node不熟，我乱试也成功了。在整个ee框架的main.js的new Main(),加上require就行了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Appliaction = <span class="built_in">require</span>(<span class="string">&#x27;ee-core&#x27;</span>).Appliaction;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">Appliaction</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line">    <span class="comment">// this === eeApp;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">async</span> ready () &#123;  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> electronAppReady () &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> windowReady () &#123;&#125;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">async</span> beforeClose () &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Main();</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;./express/bin/www&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>当然，这确实把项目跑起来了，但是不好。<br>整个项目是以new Main为入口的，我相当于又开了一个程序。ee框架作者封装的所有功能都用不了。 好难受啊，特别是日志文件和app全局变量，调试时很难。我这express相当于是孤立的，只能自己用原生node的api （当然这的唯一好处就是之前说的：服务器上直接运行，因为没有依赖其他框架）</p>
+<ol start="3">
+<li>R环境（最重要）</li>
+</ol>
+<p>我发现，一个应用安装，实际上先把相关代码解压到安装路径，然后创建一些桌面快捷图标，向windows注册，写环境变量等其他。这一点很重要，是我项目能跑下来的核心，我发现，把R安装到电脑上后，找到R安装位置，把它整体移动到其他地方，甚至装到U盘插到一台没有R环境的电脑，用R.exe和Rscript.exe也能运行。<br>正因如此，我才决定开发这个软件。R环境是整个项目最大的技术障碍，如果不能保证其他计算机环境能运行R，我这软件就没啥用。我可以在安装包中内置个R，用Rscript.exe  ***.R  来运行R代码，这个问题在3.29号被发现，在之前，我都没想过要参加比赛(计算机程序设计大赛的作品)。这个问题解决后，其他的都是小技术障碍，慢慢解决就行。</p>
+<ol start="4">
+<li><p>代码组装，用es6有的字符串模板。先把R包的参数搞清楚，拼就行了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">boxplot_code</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file_name = arg.filePath</span><br><span class="line">    <span class="keyword">var</span> save_img_path = arg.save_img_path</span><br><span class="line">    <span class="keyword">var</span> group_name= arg.group_name</span><br><span class="line">    <span class="keyword">var</span> x_vari = arg.x_vari</span><br><span class="line">    <span class="keyword">var</span> y_vari = arg.y_vari</span><br><span class="line">    <span class="keyword">var</span> fill = arg.fill</span><br><span class="line">    <span class="keyword">var</span> notch = arg.notch</span><br><span class="line">    <span class="keyword">var</span> legend_position = arg.legend_position</span><br><span class="line">    <span class="keyword">var</span> coord_flip = arg.coord_flip  <span class="comment">// coord_flip() +</span></span><br><span class="line">    <span class="keyword">var</span> x_name = arg.x_name</span><br><span class="line">    <span class="keyword">var</span> y_name = arg.y_name</span><br><span class="line">    <span class="keyword">var</span> legend_name = arg.legend_name</span><br><span class="line">    <span class="comment">//更改参数</span></span><br><span class="line">    <span class="keyword">if</span> (fill == <span class="string">&#x27;FALSE&#x27;</span>)&#123;fill=<span class="string">&#x27;&#x27;</span>&#125;<span class="keyword">else</span>&#123;fill = <span class="string">&#x27;fill = &#x27;</span>+group_name&#125; </span><br><span class="line">    <span class="keyword">if</span> (coord_flip == <span class="string">&#x27;FALSE&#x27;</span>)&#123;coord_flip=<span class="string">&#x27;&#x27;</span>&#125;<span class="keyword">else</span>&#123;coord_flip = <span class="string">&#x27;coord_flip() + &#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">if</span>(x_name == <span class="string">&#x27;&#x27;</span>)&#123;x_name = x_vari &#125;</span><br><span class="line">    <span class="keyword">if</span>(y_name == <span class="string">&#x27;&#x27;</span>)&#123;y_name = y_vari &#125;</span><br><span class="line">    <span class="keyword">if</span>(legend_name == <span class="string">&#x27;&#x27;</span>)&#123; legend_name = group_name&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> code =<span class="string">`</span></span><br><span class="line"><span class="string">library(ggplot2)</span></span><br><span class="line"><span class="string">testdata &lt;- read.table(&quot;<span class="subst">$&#123;file_name&#125;</span>&quot;,header=T,sep=&#x27;\t&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">testdata$<span class="subst">$&#123;group_name&#125;</span> &lt;- as.factor(testdata$<span class="subst">$&#123;group_name&#125;</span>)  # 转变为因子，才会显示分组</span></span><br><span class="line"><span class="string">testdata$<span class="subst">$&#123;x_vari&#125;</span> &lt;- as.factor(testdata$<span class="subst">$&#123;x_vari&#125;</span>)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">ggplot(data = testdata,</span></span><br><span class="line"><span class="string">        aes(x=<span class="subst">$&#123;x_vari&#125;</span>,      #  x,y坐标</span></span><br><span class="line"><span class="string">            y=<span class="subst">$&#123;y_vari&#125;</span>,</span></span><br><span class="line"><span class="string">            color=<span class="subst">$&#123;group_name&#125;</span>,    # 修改箱线图线的颜色</span></span><br><span class="line"><span class="string">            <span class="subst">$&#123;fill&#125;</span>)) +   # 填充</span></span><br><span class="line"><span class="string">    geom_boxplot(notch=<span class="subst">$&#123;notch&#125;</span>) +   # 绘制有缺口的箱线图</span></span><br><span class="line"><span class="string">    theme(legend.position = &quot;<span class="subst">$&#123;legend_position&#125;</span>&quot;) +    # 修改图例位置(&quot;top/bottom/none/left/right&quot;)</span></span><br><span class="line"><span class="string">    <span class="subst">$&#123;coord_flip&#125;</span> # 旋转坐标轴</span></span><br><span class="line"><span class="string">    labs(x = &quot;<span class="subst">$&#123;x_name&#125;</span>&quot;, y = &quot;<span class="subst">$&#123;y_name&#125;</span>&quot;,color=&quot;<span class="subst">$&#123;legend_name&#125;</span>&quot;)  # 修改坐标轴名称和图例名称</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">ggsave(&quot;<span class="subst">$&#123;save_img_path&#125;</span>&quot;,width = 6, height = 6, dpi = 300) # 大小为：width*dpi，height*dpi</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">   <span class="keyword">return</span> code</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = boxplot_code</span><br></pre></td></tr></table></figure></li>
+<li><p>运行R代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> process = <span class="built_in">require</span>(<span class="string">&quot;child_process&quot;</span>); </span><br><span class="line">process.exec(<span class="string">&quot;D:/*/*/Rscript.exe  */*/**.R&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>把图片和代码返回vue就行了</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/24/EE%E6%A1%86%E6%9E%B62-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="东东">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="是东东啊">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/24/EE%E6%A1%86%E6%9E%B62-0/" class="post-title-link" itemprop="url">EE框架2.0</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-24 17:11:37 / 修改时间：19:59:50" itemprop="dateCreated datePublished" datetime="2022-04-24T17:11:37+08:00">2022-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">桌面应用开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+<blockquote>
+<p>一个入门简单、跨平台桌面软件开发框架<br>github：<a href="https://gitee.com/link?target=https://github.com/wallace5303/electron-egg">https://github.com/wallace5303/electron-egg</a><br>原文档： <a target="_blank" rel="noopener" href="https://www.yuque.com/u34495/mivcfg">https://www.yuque.com/u34495/mivcfg</a></p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><blockquote>
+<ol>
+<li>跨平台：一套代码，可以打包成windows版、Mac版、Linux版运行</li>
+<li>简单高效：只需学习js语言，同时支持vue、react、html等前端技术</li>
+<li>前端独立：理论上支持任何前端技术，编写出精美的UI效果</li>
+<li>工程化：可以用服务端的开发思维，来编写桌面软件</li>
+<li>高性能：事件驱动、非阻塞式IO</li>
+<li>功能丰富：服务端的技术场景等</li>
+<li>功能demo：桌面软件常见功能，后续逐步集成或提供demo</li>
+<li>更多功能请看文档</li>
+</ol>
+</blockquote>
+<p>该框架是在electron基础上进行修改，属于半成品的桌面应用，提供很多demo，方便快速成型一个桌面应用，效率很高 。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">├── package.json npm包配置</span><br><span class="line">├── bulid 打包用的资源和脚本</span><br><span class="line">		├── icons 软件图标（打包用到）</span><br><span class="line">    ├── extraResources 额外资源目录</span><br><span class="line">├── electron 主进程服务</span><br><span class="line">    ├── config 配置文件</span><br><span class="line">        ├── config.default.js 默认配置，都会加载</span><br><span class="line">        ├── config.local.js dev环境加载</span><br><span class="line">        ├── config.prod.js 生产环境加载</span><br><span class="line">		├── controller 控制器</span><br><span class="line">    ├── service 业务层</span><br><span class="line">    ├── preload 预加载，在程序启动时加载，如托盘、自动升级等功能要提前加载代码</span><br><span class="line">    ├── library 一些封装库</span><br><span class="line">├── frontend 前端目录（demo是用vue编写的）    </span><br><span class="line">├── out 打包后生成的可执行文件</span><br><span class="line">		├── latest.yml 自动升级文件</span><br><span class="line">		├── xxx.exe window应用安装包</span><br><span class="line">    ├── xxx.exe.blockmap window应用增量升级包（未测试过）</span><br><span class="line">    ├── xxx.dmg mac应用安装包</span><br><span class="line">    ├── xxx.deb linux应用安装包后缀有多种    </span><br><span class="line">├── run 一些运行缓存</span><br><span class="line">├── logs 日志 </span><br><span class="line">├── main.js 入口文件 </span><br><span class="line">├── public 资源目录</span><br><span class="line">		├── dist 前端资源会移动到这里，生产环境加载</span><br><span class="line">		├── html 一些模板</span><br><span class="line">    ├── images 一些图片</span><br><span class="line">├── data 内置数据库文件</span><br><span class="line">		├── system.json 框架使用的数据库</span><br><span class="line">		├── demo.json 示例数据库</span><br></pre></td></tr></table></figure>
+<p>注意： </p>
+<ol>
+<li>front: 前端项目的目录，进去后就是vue 的node_modules</li>
+<li>main.js： electron项目入口，原生的electron代码这个项目里没有，需要  const  Appliaction = require(‘ee-core’).Appliaction;  作者把electron代码放在ee-core包里，这里几乎都是项目的配置文件。</li>
+<li>public: vue项目带包后移到这里</li>
+<li>build 可以添加其他资源，将一起附带到安装包</li>
+</ol>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># 开发者模式</span><br><span class="line">	# 1：【进入前端目录】，启动前端服务</span><br><span class="line">  cd electron-egg/frontend &amp;&amp; npm install &amp;&amp; npm run serve</span><br><span class="line">  # 2：【根目录】，启动后端服务</span><br><span class="line">  npm run dev</span><br><span class="line"></span><br><span class="line"># 预发布模式（环境变量为：prod）</span><br><span class="line">npm run start</span><br><span class="line"></span><br><span class="line"># 打包 windows版本</span><br><span class="line">npm run build-w (32位)</span><br><span class="line">npm run build-w-64 (64位)</span><br><span class="line"></span><br><span class="line"># 打包 mac版本</span><br><span class="line">npm run build-m</span><br><span class="line">npm run build-m-arm64 (m1芯片架构)</span><br><span class="line"></span><br><span class="line"># 打包 linux版本</span><br><span class="line">npm run build-l</span><br><span class="line"></span><br><span class="line"># 移动前端静态资源</span><br><span class="line">npm run rd</span><br><span class="line"></span><br><span class="line"># 混淆加密</span><br><span class="line">npm run compress</span><br><span class="line"></span><br><span class="line"># 还原</span><br><span class="line">npm run restore</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/15/electron%E6%98%AF%E4%BB%80%E4%B9%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1062,189 +1277,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE15%E5%A4%A9%E5%85%A5%E9%97%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E6%80%BB%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="东东">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是东东啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/23/%E5%9F%BA%E5%9B%A0%E8%AF%BE15%E5%A4%A9%E5%85%A5%E9%97%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E6%80%BB%E8%BF%B0/" class="post-title-link" itemprop="url">基因课15天入门生物信息总述</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-23 15:44:50 / 修改时间：19:23:14" itemprop="dateCreated datePublished" datetime="2022-02-23T15:44:50+08:00">2022-02-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E4%BF%A1/%E5%9F%BA%E5%9B%A0%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">基因课</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer" />
-
-<blockquote>
-<p>官网视频：<a target="_blank" rel="noopener" href="https://genek-pc.duanshu.com/course/detail/455dbc620a5242fd800dfdc508d978b7">genek.cn</a><br>b站：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K44y1B7Dg">https://www.bilibili.com/video/BV1K44y1B7Dg</a></p>
-</blockquote>
-<h3 id="第一天-测序原理"><a href="#第一天-测序原理" class="headerlink" title="第一天 测序原理"></a>第一天 测序原理</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603138118-b3e5d773-3a0e-4bdf-9968-61a1ab1a01b1.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=248&id=u141e023a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=248&originWidth=528&originalType=binary&ratio=1&rotation=0&showTitle=false&size=65730&status=done&style=none&taskId=u229641e0-a56b-4483-ac46-3b58e878497&title=&width=529" alt="image.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603159789-b2771f37-49f5-4c1f-a6d4-96344a056f32.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=270&id=u4569556a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=292&originWidth=553&originalType=binary&ratio=1&rotation=0&showTitle=false&size=114333&status=done&style=none&taskId=ud03b4e0b-4871-45d2-8b09-0730d851654&title=&width=510.5" alt="image.png"></p>
-<blockquote>
-<p>前半部分：标准化分析，在linux              后半部分：个性化分析，在Windows</p>
-</blockquote>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="第二天-linux介绍与虚拟机安装"><a href="#第二天-linux介绍与虚拟机安装" class="headerlink" title="第二天 linux介绍与虚拟机安装"></a>第二天 linux介绍与虚拟机安装</h3><h3 id="第三天-linux基础命令"><a href="#第三天-linux基础命令" class="headerlink" title="第三天 linux基础命令"></a>第三天 linux基础命令</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26124263/1645603376812-ab377dc2-d834-450d-b062-33c4212ce0ec.png#clientId=u207c1384-888b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1566&id=u2e5030b9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=3132&originWidth=4512&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1061387&status=done&style=none&taskId=u5b0b0880-4375-4ded-b6c4-55984f582b3&title=&width=2256" alt="image.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="东东">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="是东东啊">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/23/hexo/" class="post-title-link" itemprop="url">hexo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-23 15:35:02 / 修改时间：15:35:55" itemprop="dateCreated datePublished" datetime="2022-02-23T15:35:02+08:00">2022-02-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <meta name="referrer" content="no-referrer" />
-
-<h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1.基本操作"></a>1.基本操作</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li><p><strong>清除缓存：</strong>hexo clean</p>
-</li>
-<li><p><strong>生成静态文件：</strong>hexo generate可简写为 hexo g</p>
-</li>
-<li><p><strong>启动服务器：</strong>hexo server或者 hexo s 常用参数：-p（–port）重设端口</p>
-</li>
-<li><p><strong>部署：</strong>hexo deploy可简写为hexo d，用于将网站部署到服务器上。（暂时用不到，目前都是在本地，后面我们将博客托管到GitHub Pages或Gitee Pages时才会用到此命令）<br>常用参数：-g（–generate），hexo d -g部署前预先生成静态文件，等同于 hexo g -d</p>
-</li>
-</ul>
-<p><strong>一般发布文章或者修改博客后需要这些操作：</strong>清除缓存&gt;生成静态文件&gt;启动服务器，测试没问题后再部署。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 我们可以写成一条命令</span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo d</span></span><br></pre></td></tr></table></figure>
-<h3 id="为文章添加多个分类"><a href="#为文章添加多个分类" class="headerlink" title="为文章添加多个分类"></a>为文章添加多个分类</h3><p>1）下面文章属于三个分类：日常 &gt; 生活，日常 &gt; 随想，日记<br>2）其中生活、随想为日常的子分类，日常和日记为同级分类</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">categories: </span><br><span class="line">- [日常, 生活]</span><br><span class="line">- [日常, 随想]</span><br><span class="line">- [日记]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h3 id="2-文章模板设置"><a href="#2-文章模板设置" class="headerlink" title="2.文章模板设置"></a>2.文章模板设置</h3><blockquote>
-<p>每次使用hexo new post “post-name”新建一片文章时，只有title date tags，<br>还要手动增加 categories</p>
-</blockquote>
-<p>可以修改修改了scaffolds中的post模板。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">categories:</span><br><span class="line">- []</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="3-图片无法显示"><a href="#3-图片无法显示" class="headerlink" title="3.图片无法显示"></a>3.图片无法显示</h3><blockquote>
-<p>语雀转成md文件导出，图片无法正常显示</p>
-</blockquote>
-<p>当你使用hexo上传博客时，在md文件中加上meta标签即可保证图片都能正常显示，标签如下</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;no-referrer&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1316,14 +1348,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
